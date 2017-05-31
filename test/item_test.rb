@@ -12,7 +12,7 @@ class ItemTest < Minitest::Test
 
   def test_item_id
     new_instance = Item.new([0, "toothbrush", "brush teeth", 3])
-    result = new_instance.name
+    result = new_instance.id
     assert_equal 0, result
   end
 
