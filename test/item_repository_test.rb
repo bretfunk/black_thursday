@@ -7,7 +7,7 @@ require './lib/item_repository'
 class ItemRepoTest < Minitest::Test
 
   def test_class_exists
-    result = ItemRepository.new(['a', 'b'])
+    result = ItemRepository.new('a', 'b')
     assert_instance_of ItemRepository, result
   end
 
