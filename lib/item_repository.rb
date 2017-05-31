@@ -5,7 +5,7 @@ class ItemRepository
   attr_reader :items
 
   def initialize(csv)
-    @items = csv.collect { |i| Item.new(i)}
+    @items = CSV.open csv, headers: true, header_converters: :symbol
   end
 
   item_contents = CSV.open "./data/items.csv", headers: true, header_converters: :symbol
@@ -24,3 +24,6 @@ class ItemRepository
   end
 
 end
+
+test = ItemRepository.new("./data/items.csv")
+puts test.name
