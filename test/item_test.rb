@@ -4,7 +4,7 @@ require 'minitest/pride'
 require './lib/item'
 
 class ItemTest < Minitest::Test
-
+  
   def test_item_class_exists
     result = Item.new([0, "toothbrush", "brush teeth", 3])
     assert_instance_of Item, result
