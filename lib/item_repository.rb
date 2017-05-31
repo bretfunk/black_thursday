@@ -8,10 +8,19 @@ class ItemRepository
     @items = csv.collect { |i| Item.new(i)}
   end
 
-  # item_contents = CSV.open "./data/items.csv", headers: true, header_converters: :symbol
-  # item_contents.each do |row|
-  #   name = row[:name]
-  #   description = row[:description]
-  #   unit_price = row[:unit_price]
-  # end
+  item_contents = CSV.open "./data/items.csv", headers: true, header_converters: :symbol
+  item_contents.each do |row|
+    id = row[:id]
+    name = row[:name]
+    description = row[:description]
+    unit_price = row[:unit_price]
+    merchant_id = row[:merchant_id]
+
+    puts "#{id}"
+    puts "#{name}"
+    puts "#{description}"
+    puts "#{unit_price}"
+    puts "#{merchant_id}"
+  end
+
 end
