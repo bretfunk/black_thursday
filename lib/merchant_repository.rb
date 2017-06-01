@@ -37,3 +37,4 @@ class MerchantRepository
     @contents.select{|merchant| merchant.name.upcase == name.to_s.upcase}
   end
 end
+##
