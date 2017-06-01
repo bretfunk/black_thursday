@@ -24,7 +24,6 @@ class ItemRepository
     p contents
   end
 
-
   def find_by_id(item_id)
     item_id = item_id.to_s
     item = nil
@@ -80,5 +79,5 @@ end
 
 thing = ItemRepository.new("./data/items.csv")
 # puts test.contents
-# puts test.find_by_id(263395237)
-p thing.find_all_by_merchant_id(12334301)
+p thing.find_by_name("Intricate Sunset")
+# p thing.find_all_by_merchant_id(12334301)
