@@ -75,7 +75,6 @@ class ItemRepository
     array
   end
 
-
 end
 
 thing = ItemRepository.new("./data/items.csv")

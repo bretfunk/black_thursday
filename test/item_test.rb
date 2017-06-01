@@ -5,7 +5,7 @@ require './lib/item'
 # require 'simplecov'
 
 class ItemTest < Minitest::Test
-
+  
   def test_item_class_exists
     result = Item.new({
       :id          => 999999,
