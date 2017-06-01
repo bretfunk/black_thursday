@@ -3,8 +3,7 @@ require 'csv'
 require 'pry'
 
 class ItemRepository
-
-  attr_reader  :input, :contents
+  attr_reader :input, :contents
 
   def initialize(csv)
     @input = CSV.open csv, headers: true, header_converters: :symbol
