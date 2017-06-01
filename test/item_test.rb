@@ -2,55 +2,132 @@ require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/item'
+# require 'simplecov'
 
 class ItemTest < Minitest::Test
   
   def test_item_class_exists
-    result = Item.new([0, "toothbrush", "brush teeth", 3])
+    result = Item.new({
+      :id          => 999999,
+      :name        => "Pencil",
+      :description => "You can use it to write things",
+      :unit_price  => 3,
+      :created_at  => Time.now,
+      :updated_at  => Time.now,
+      :merchant_id => 273468
+      })
+
     assert_instance_of Item, result
   end
 
-  def test_item_id
-    new_instance = Item.new([0, "toothbrush", "brush teeth", 3])
-    result = new_instance.name
-    assert_equal 0, result
+  def test_it_returns_id
+    id_test = Item.new({
+      :id          => 999999,
+      :name        => "Pencil",
+      :description => "You can use it to write things",
+      :unit_price  => 3,
+      :created_at  => Time.now,
+      :updated_at  => Time.now,
+      :merchant_id => 273468
+      })
+
+    result = id_test.id
+
+    assert_equal 999999, result
   end
 
-  def test_item_name
-    new_instance = Item.new([0, "toothbrush", "brush teeth", 3])
-    result = new_instance.name
-    assert_equal "toothbrush", result
+  def test_it_returns_name
+    name_test = Item.new({
+      :id          => 999999,
+      :name        => "Pencil",
+      :description => "You can use it to write things",
+      :unit_price  => 3,
+      :created_at  => Time.now,
+      :updated_at  => Time.now,
+      :merchant_id => 273468
+      })
+
+    result  = name_test.name
+
+    assert_equal "Pencil", result
   end
 
-  def test_item_description
-    new_instance = Item.new([0, "toothbrush", "brush teeth", 3])
-    result = new_instance.description
-    assert_equal "brush teeth", result
+  def test_it_returns_description
+    description_test = Item.new({
+      :id          => 999999,
+      :name        => "Pencil",
+      :description => "You can use it to write things",
+      :unit_price  => 3,
+      :created_at  => Time.now,
+      :updated_at  => Time.now,
+      :merchant_id => 273468
+      })
+
+    result = description_test.description
+
+    assert_equal "You can use it to write things", result
   end
 
-  def test_item_unit_price
-    new_instance = Item.new([0, "toothbrush", "brush teeth", 3])
-    result = new_instance.unit_price
-    assert_equal 3, result
+  def test_it_returns_unit_price
+    unit_price_test = Item.new({
+      :id          => 999999,
+      :name        => "Pencil",
+      :description => "You can use it to write things",
+      :unit_price  => BigDecimal.new(10.99,4),
+      :created_at  => Time.now,
+      :updated_at  => Time.now,
+      :merchant_id => 273468
+      })
+
+    result = unit_price_test.unit_price
+
+    assert_equal 0.1099e2, result
   end
 
-  def test_created_at
-    new_instance = Item.new([0, "toothbrush", "brush teeth", 3])
-    result = new_instance.created_at
-    refute_equal Time.now, result
+  def test_it_can_return_created_at_value
+    time = Time.now
+    created_at_test = Item.new({
+      :id          => 999999,
+      :name        => "Pencil",
+      :description => "You can use it to write things",
+      :unit_price  => 3,
+      :created_at  => time,
+      :updated_at  => Time.now,
+      :merchant_id => 273468
+      })
+
+    assert_equal created_at_test.created_at, time
   end
 
-  def test_updated_at
-    new_instance = Item.new([0, "toothbrush", "brush teeth", 3])
-    result = new_instance.updated_at
-    refute_equal Time.now, result #-0600
+  def test_it_can_return_updated_at_value
+    time = Time.now
+    updated_at_test = Item.new({
+      :id          => 999999,
+      :name        => "Pencil",
+      :description => "You can use it to write things",
+      :unit_price  => 3,
+      :created_at  => Time.now,
+      :updated_at  => time,
+      :merchant_id => 273468
+      })
+
+    assert_equal updated_at_test.updated_at, time
   end
 
-  def test_merchant_id
-    skip
-    new_instance = Item.new([0, "toothbrush", "brush teeth", 3])
-    result = new_instance.merchant_id
-    assert_equal 0, result
+  def test_it_converts_unit_price_to_float
+    price_to_dollar_test =  Item.new({
+      :id          => 999999,
+      :name        => "Pencil",
+      :description => "You can use it to write things",
+      :unit_price  => 3,
+      :created_at  => Time.now,
+      :updated_at  => time,
+      :merchant_id => 273468
+      })
+
+    result = price_to_dollar_test.unit_price_to_dollars
+
+    assert_equal 3.00, result
   end
 
 end

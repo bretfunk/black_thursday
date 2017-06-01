@@ -2,6 +2,7 @@ require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/merchant'
+require 'simplecov'
 
 class MerchantTest < Minitest::Test
 
@@ -23,7 +24,8 @@ class MerchantTest < Minitest::Test
     assert_equal "Turing School", m.name
   end
 
-  def test_it_returns_a_time_created_at ## for item
+  def test_it_returns_a_time_created_at ## for item item, not needed for merchant
+
     time_created_at = Time.now
     m = Merchant.new({:id => 5, :name => "Turing School", :created_at => time_created_at})
 
