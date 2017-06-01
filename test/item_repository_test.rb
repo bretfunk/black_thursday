@@ -2,8 +2,6 @@ require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/item_repository'
-# require 'simplecov'
-#require './data/items.csv'
 
 class ItemRepoTest < Minitest::Test
 

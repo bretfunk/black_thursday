@@ -3,8 +3,7 @@ require 'csv'
 require 'pry'
 
 class ItemRepository
-
-  attr_reader  :input, :contents
+  attr_reader :input, :contents
 
   def initialize(csv)
     @input = CSV.open csv, headers: true, header_converters: :symbol
@@ -14,14 +13,13 @@ class ItemRepository
   def item_collection
     @contents = @input.map do |row|
       Item.new({:id => row[0], :name => row[1], :description => row[2],
-      :unit_price => row[3], :created_at => row[5], :updated_at => row[6],
-      :merchant_id => row[4]})
+      :unit_price => row[3], :merchant_id => row[4], :created_at => row[5], :updated_at => row[6]})
     end
     @contents
   end
 
   def all
-    p contents
+    contents
   end
 
 
@@ -42,7 +40,6 @@ class ItemRepository
   end
 
   def find_all_with_description(item_description)
-    # item_description = item_description.to_s
     array = []
     @contents.map do |word|
       array << word if item_description.upcase == word.description.upcase
@@ -58,6 +55,7 @@ class ItemRepository
     array
   end
 
+#array in arrays
   def find_all_by_price_in_range(range)
     array = []
     range.to_a.map do |num|
@@ -65,6 +63,13 @@ class ItemRepository
     end
     array.reject { |units| units.empty? }
   end
+
+  # def find_all_by_price_in_range(range)
+  #   #new
+  #   @contents.select do |item|
+  #     range.to_s.include? (item.unit_price)
+  #   end
+  # end
 
   def find_all_by_merchant_id(merch_id)
     array = []
@@ -76,8 +81,3 @@ class ItemRepository
   end
 
 end
-
-thing = ItemRepository.new("./data/items.csv")
-# puts test.contents
-# puts test.find_by_id(263395237)
-p thing.find_all_by_merchant_id(12334301)
