@@ -3,20 +3,21 @@ require 'csv'
 require 'pry'
 
 class ItemRepository
-  attr_reader :items
+
+  attr_reader  :input, :contents
 
   def initialize(csv)
     @input = CSV.open csv, headers: true, header_converters: :symbol
+    item_collection
   end
 
-  def item_collection(input)
-    items = @input.map do |row|
-      id = row[:id]
-      name = row[:name]
-      description = row[:description]
-      unit_price = row[:unit_price]
-      merchant_id = row[:merchant_id]
+  def item_collection
+    @contents = @input.map do |row|
+      Item.new({:id => row[0], :name => row[1], :description => row[2],
+      :unit_price => row[3], :created_at => row[5], :updated_at => row[6],
+      :merchant_id => row[4]})
     end
+    @contents
   end
 
 
@@ -51,4 +52,4 @@ class ItemRepository
 end
 
 test = ItemRepository.new("./data/items.csv")
-puts test.description
+puts test.contents
