@@ -2,10 +2,11 @@ require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/item'
+# require './test_data/items_fixtures'
 # require 'simplecov'
 
 class ItemTest < Minitest::Test
-  
+
   def test_item_class_exists
     result = Item.new({
       :id          => 999999,
@@ -33,7 +34,7 @@ class ItemTest < Minitest::Test
 
     result = id_test.id
 
-    assert_equal 999999, result
+    assert_equal "999999", result
   end
 
   def test_it_returns_name

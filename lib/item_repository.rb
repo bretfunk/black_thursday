@@ -81,5 +81,5 @@ class ItemRepository
 
 end
 
-
-
+thing = ItemRepository.new("./data/items.csv")
+p thing.all
