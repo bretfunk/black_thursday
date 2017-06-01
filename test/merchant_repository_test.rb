@@ -5,6 +5,7 @@ require './lib/merchant_repository'
 require './lib/sales_engine'
 
 class MerchantRep < Minitest::Test
+  attr_reader :new_instance
   def setup
     @new_instance = MerchantRepository.new("./data/merchants.csv")
   end
@@ -14,37 +15,37 @@ class MerchantRep < Minitest::Test
   end
 
   def test_all
-    result = @new_instance.all.count
+    result = new_instance.all.count
     assert_equal 475, result
   end
 
   def test_find_all_by_merchant_id
-    result = @new_instance.find_all_by_merchant_id(12334105)
-    assert_equal 1, result.count
+    result = new_instance.find_by_id(12334105)
+    assert_equal "Shopin1901", result.name
   end
 
   def test_fake_merch_id
-    result = @new_instance.find_all_by_merchant_id(11111111111111)
-    assert_equal nil, result
+    result = new_instance.find_by_id(11111111111111)
+    assert_nil result
   end
 
   def test_find_by_name
-    result = @new_instance.find_by_name("HeadyMamaCreations")
-    refute_nil result
+    result = new_instance.find_by_name("HeadyMamaCreations")
+    assert_equal "12337321", result.id
   end
 
   def test_fake_name
-    result = @new_instance.find_by_name("Mountain Peak Survival")
+    result = new_instance.find_by_name("Mountain Peak Survival")
     assert_nil result
   end
 
   def test_find_all_by_name
-    result = @new_instance.find_all_by_name("LovesVariety")
+    result = new_instance.find_all_by_name("LovesVariety")
     refute_nil result
   end
 
   def test_find_all_fake_name
-    result = @new_instance.find_all_by_name("Ruby Recruiting")
+    result = new_instance.find_all_by_name("Ruby Recruiting")
     assert_equal [], result
   end
 end

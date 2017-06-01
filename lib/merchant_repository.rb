@@ -3,37 +3,29 @@ require 'csv'
 require 'pry'
 
 class MerchantRepository
-  attr_reader :input, :contents
+  attr_reader :input, :all
 
   def initialize(csv)
-    @input = CSV.open csv, headers: true, header_converters: :symbol
-    merch_collection
+    input = CSV.open csv, headers: true, header_converters: :symbol
+    @all = []
+    merch_collection(input)
   end
 
-  def merch_collection
-    @contents = @input.map do |row|
-      Merchant.new({:id => row[0], :name => row[1], :created_at => row[2], :updated_at => row[3]})
+  def merch_collection(input)
+    input.map do |row|
+      @all << Merchant.new(row)
     end
-    @contents
   end
 
-  def all
-    contents
-  end
-
-  def find_all_by_merchant_id(merchant_id)
-    array = []
-    @contents.map do |merchant|
-      array << merchant if merchant.id == merchant_id.to_s
-    end
-      array.empty? ? nil : array
+  def find_by_id(merchant_id)
+    @all.find {|merchant| merchant.id == merchant_id.to_s}
   end
 
   def find_by_name(name)
-    @contents.find {|merchant| merchant.name.upcase == name.to_s.upcase}
+    @all.find {|merchant| merchant.name.upcase == name.to_s.upcase}
   end
 
   def find_all_by_name(name)
-    @contents.select{|merchant| merchant.name.upcase == name.to_s.upcase}
+    @all.select{|merchant| merchant.name.upcase == name.to_s.upcase}
   end
 end
