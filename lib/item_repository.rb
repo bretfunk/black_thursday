@@ -13,8 +13,7 @@ class ItemRepository
   def item_collection
     @contents = @input.map do |row|
       Item.new({:id => row[0], :name => row[1], :description => row[2],
-      :unit_price => row[3], :created_at => row[5], :updated_at => row[6],
-      :merchant_id => row[4]})
+      :unit_price => row[3], :merchant_id => row[4], :created_at => row[5], :updated_at => row[6]})
     end
     @contents
   end
@@ -41,7 +40,6 @@ class ItemRepository
   end
 
   def find_all_with_description(item_description)
-    # item_description = item_description.to_s
     array = []
     @contents.map do |word|
       array << word if item_description.upcase == word.description.upcase
@@ -75,8 +73,3 @@ class ItemRepository
   end
 
 end
-
-thing = ItemRepository.new("./data/items.csv")
-# puts test.contents
-# puts test.find_by_id(263395237)
-p thing.find_all_by_merchant_id(12334301)
