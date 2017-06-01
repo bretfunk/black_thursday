@@ -55,6 +55,7 @@ class ItemRepository
     array
   end
 
+#array in arrays
   def find_all_by_price_in_range(range)
     array = []
     range.to_a.map do |num|
@@ -62,6 +63,13 @@ class ItemRepository
     end
     array.reject { |units| units.empty? }
   end
+
+  # def find_all_by_price_in_range(range)
+  #   #new
+  #   @contents.select do |item|
+  #     range.to_s.include? (item.unit_price)
+  #   end
+  # end
 
   def find_all_by_merchant_id(merch_id)
     array = []

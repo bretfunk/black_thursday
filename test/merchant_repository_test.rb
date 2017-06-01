@@ -2,6 +2,7 @@ require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/merchant_repository'
+require './lib/sales_engine'
 
 class MerchantRep < Minitest::Test
   def setup
