@@ -17,14 +17,16 @@ class MerchantRepository
     @contents
   end
 
-#needs to be array
   def all
     contents
   end
 
-#needs to be nil if empty
   def find_all_by_merchant_id(merchant_id)
-    @contents.select {|merchant| merchant.id == merchant_id.to_s}
+    array = []
+    @contents.map do |merchant|
+      array << merchant if merchant.id == merchant_id.to_s
+    end
+      array.empty? ? nil : array
   end
 
   def find_by_name(name)

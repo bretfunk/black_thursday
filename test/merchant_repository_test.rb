@@ -12,7 +12,6 @@ class MerchantRep < Minitest::Test
     assert_instance_of MerchantRepository, @new_instance
   end
 
-#needs to be array
   def test_all
     result = @new_instance.all.count
     assert_equal 475, result
@@ -23,10 +22,9 @@ class MerchantRep < Minitest::Test
     assert_equal 1, result.count
   end
 
-#need tp make work, needs to be nil or answer
   def test_fake_merch_id
     result = @new_instance.find_all_by_merchant_id(11111111111111)
-    assert_equal [], result
+    assert_equal nil, result
   end
 
   def test_find_by_name

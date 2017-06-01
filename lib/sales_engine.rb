@@ -5,17 +5,13 @@ require 'simplecov'
 require 'pry'
 
 class SalesEngine
-  attr_reader :items, :merchants
-
-  def self.from_csv(files)
+  attr_accessor :items, :merchants
+  def initialize(files)
     @items = ItemRepository.new(files[:items])
     @merchants = MerchantRepository.new(files[:merchants])
   end
-end
 
-se = SalesEngine.from_csv({
-  :items     => "./data/items.csv",
-  :merchants => "./data/merchants.csv",
-})
-mr = se.merchants
-p mr.find_by_name("CJsDecor")
+  def self.from_csv(files)
+    SalesEngine.new(files)
+  end
+end
