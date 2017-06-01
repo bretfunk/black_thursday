@@ -20,7 +20,7 @@ class ItemRepository
   end
 
   def all
-    p contents
+    contents
   end
 
 

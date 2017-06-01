@@ -17,10 +17,12 @@ class MerchantRepository
     @contents
   end
 
+#needs to be array
   def all
-    p contents
+    contents
   end
 
+#needs to be nil if empty
   def find_all_by_merchant_id(merchant_id)
     @contents.select {|merchant| merchant.id == merchant_id.to_s}
   end
@@ -33,9 +35,3 @@ class MerchantRepository
     @contents.select{|merchant| merchant.name.upcase == name.to_s.upcase}
   end
 end
-
-test = MerchantRepository.new("./data/merchants.csv")
-#p test.find_all_by_merchant_id(12334105)
-#p test.all
-#p test.find_by_name("vectorcoast")
-#p test.find_all_by_name("VectorCoast")
