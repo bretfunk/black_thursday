@@ -2,7 +2,7 @@ require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/item'
-require 'simplecov'
+# require 'simplecov'
 
 class ItemTest < Minitest::Test
 

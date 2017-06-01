@@ -2,12 +2,13 @@ require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/item_repository'
+# require 'simplecov'
 #require './data/items.csv'
 
 class ItemRepoTest < Minitest::Test
 
   def test_class_exists
-    result = ItemRepository.new('a', 'b')
+    result = ItemRepository.new(['a', 'b'])
     assert_instance_of ItemRepository, result
   end
 
