@@ -8,7 +8,7 @@ class Item
   attr_reader :ir, :id, :name, :description, :unit_price, :created_at, :updated_at, :merchant_id
 
   def initialize(params, ir = ItemRepository)
-    # @ir = ir
+    @ir = ir
     @id = params[:id].to_s
     @name = params[:name].to_s
     @description = params[:description]

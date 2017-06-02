@@ -13,10 +13,10 @@ class MerchantRepository
   end
 
   def merch_collection
-    @contents = @input.map do |row|
+    @contents = input.map do |row|
       Merchant.new({:id => row[0], :name => row[1], :created_at => row[2], :updated_at => row[3]}, self )
     end
-    # @contents
+    contents
   end
 
   def all
