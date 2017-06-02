@@ -5,10 +5,10 @@ require 'pry'
 
 class Item
 
-  attr_reader :id, :name, :description, :unit_price, :created_at, :updated_at, :merchant_id
+  attr_reader :ir, :id, :name, :description, :unit_price, :created_at, :updated_at, :merchant_id
 
   def initialize(params, ir = ItemRepository)
-    @ir = ir
+    # @ir = ir
     @id = params[:id].to_s
     @name = params[:name].to_s
     @description = params[:description]
@@ -23,6 +23,6 @@ class Item
   end
 
   def merchant
-    @ir.pass_to_se(merchant_id)
+    ir.pass_to_se(merchant_id)
   end
 end

@@ -16,7 +16,7 @@ class MerchantRepository
     @contents = @input.map do |row|
       Merchant.new({:id => row[0], :name => row[1], :created_at => row[2], :updated_at => row[3]}, self )
     end
-    @contents
+    # @contents
   end
 
   def all
@@ -24,11 +24,10 @@ class MerchantRepository
   end
 
   def find_by_id(merchant_id)
-    array = []
-    @contents.map do |merchant|
-      array << merchant if merchant.id == merchant_id.to_s
+    array = @contents.find do |merchant|
+      merchant.id == merchant_id.to_s
     end
-      array.empty? ? nil : array
+      # array.empty? ? nil : array
   end
 
   def find_by_name(name)

@@ -7,12 +7,12 @@ class Merchant
   def initialize(attributes, mr = MerchantRepository)
     @id = attributes[:id]
     @name = attributes[:name]
-    @mr = mr
+    # @mr = mr
   end
 
   def items
     # binding.pry
-    @mr.pass_to_se(id)
+    mr.pass_to_se(id)
   end
 
 end
