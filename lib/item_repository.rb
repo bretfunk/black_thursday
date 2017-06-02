@@ -1,11 +1,14 @@
 require_relative 'item'
+# require_relative 'sales_engine'
 require 'csv'
 require 'pry'
 
 class ItemRepository
+
   attr_reader :input, :contents
 
-  def initialize(csv)
+  def initialize(csv, se = SalesEngine)
+    @se = se
     @input = CSV.open csv, headers: true, header_converters: :symbol
     item_collection
   end
@@ -13,7 +16,7 @@ class ItemRepository
   def item_collection
     @contents = @input.map do |row|
       Item.new({:id => row[0], :name => row[1], :description => row[2],
-      :unit_price => row[3], :merchant_id => row[4], :created_at => row[5], :updated_at => row[6]})
+      :unit_price => row[3], :merchant_id => row[4], :created_at => row[5], :updated_at => row[6]}, self)
     end
     @contents
   end
@@ -72,14 +75,18 @@ class ItemRepository
 
   def find_all_by_merchant_id(merch_id)
     array = []
-    merch_id = merch_id.to_s
+    merch_id = merch_id.to_i
     @contents.map do |item|
       array << item if item.merchant_id == merch_id
     end
     array
   end
 
+  def pass_to_se(id)
+   @se.find_merchant_by_item_id(id)
+  end
+
 end
 
-thing = ItemRepository.new("./data/items.csv")
-p thing.all
+# thing = ItemRepository.new("./data/items.csv")
+# p thing.all
