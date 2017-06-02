@@ -21,9 +21,9 @@ class SalesEngine
     @merchants.find_by_id(id)
   end
 
-  # def find_items_by_merchant_id(id)
-  #   @items.find_all_by_merchant_id(id)
-  # end
+  def find_items_by_merchant_id(id)
+    @items.find_all_by_merchant_id(id)
+  end
 
   se = SalesEngine.from_csv({items: './data/items.csv', merchants: './data/merchants.csv'})
   binding.pry
