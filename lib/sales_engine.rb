@@ -1,6 +1,6 @@
 require_relative 'merchant_repository'
 require_relative 'item_repository'
-require 'csv'
+require 'csv' #this might not be needed
 require 'simplecov'
 require 'pry'
 
