@@ -5,6 +5,7 @@ require_relative '../lib/merchant_repository'
 #require_relative 'sales_engine'
 
 class MerchantRepoTest < Minitest::Test
+
   def setup
     @new_instance = MerchantRepository.new("./data/merchants.csv", "se")
   end
@@ -14,7 +15,7 @@ class MerchantRepoTest < Minitest::Test
   end
 
   def test_all
-    result = @new_instance.all.count
+    result = new_instance.all.count
     assert_equal 475, result
   end
 
@@ -29,22 +30,22 @@ class MerchantRepoTest < Minitest::Test
   end
 
   def test_find_by_name
-    result = @new_instance.find_by_name("HeadyMamaCreations")
-    refute_nil result
+    result = new_instance.find_by_name("HeadyMamaCreations")
+    assert_equal "12337321", result.id
   end
 
   def test_fake_name
-    result = @new_instance.find_by_name("Mountain Peak Survival")
+    result = new_instance.find_by_name("Mountain Peak Survival")
     assert_nil result
   end
 
   def test_find_all_by_name
-    result = @new_instance.find_all_by_name("LovesVariety")
+    result = new_instance.find_all_by_name("LovesVariety")
     refute_nil result
   end
 
   def test_find_all_fake_name
-    result = @new_instance.find_all_by_name("Ruby Recruiting")
+    result = new_instance.find_all_by_name("Ruby Recruiting")
     assert_equal [], result
   end
 end
