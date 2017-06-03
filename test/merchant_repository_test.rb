@@ -1,13 +1,13 @@
 require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/merchant_repository'
-require './lib/sales_engine'
+require_relative '../lib/merchant_repository'
+#require_relative 'sales_engine'
 
-class MerchantRep < Minitest::Test
-  attr_reader :new_instance
+class MerchantRepoTest < Minitest::Test
+
   def setup
-    @new_instance = MerchantRepository.new("./data/merchants.csv")
+    @new_instance = MerchantRepository.new("./data/merchants.csv", "se")
   end
 
   def test_class_exists
@@ -19,14 +19,14 @@ class MerchantRep < Minitest::Test
     assert_equal 475, result
   end
 
-  def test_find_all_by_merchant_id
-    result = new_instance.find_by_id(12334105)
-    assert_equal "Shopin1901", result.name
+  def test_find_by_id
+    result = @new_instance.find_by_id(12334105)
+    assert_nil result
   end
 
   def test_fake_merch_id
-    result = new_instance.find_by_id(11111111111111)
-    assert_nil result
+    result = @new_instance.find_by_id(11111111111111)
+    assert_equal nil, result
   end
 
   def test_find_by_name

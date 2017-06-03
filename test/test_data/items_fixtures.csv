@@ -1,0 +1,8 @@
+id,name,description,unit_price,merchant_id,created_at,updated_at
+111111, name of thing 1, description of thing 1, 100, 999999, 2010-12-10,2011-12-04,
+222222, name of thing 2, description of thing 2, 200, 888888, 2010-12-10,2011-12-04,
+333333, name of thing 3, description of thing 3, 300, 777777, 2010-12-10,2011-12-04,
+444444, name of thing 4, description of thing 4, 400, 666666, 2010-12-10,2011-12-04,
+555555, name of thing 5, description of thing 5, 500, 555555, 2010-12-10,2011-12-04,
+666666, name of thing 6, description of thing 6, 600, 999999, 2010-12-10,2011-12-04,
+777777, name of thing 7, description of thing 1, 100, 999999, 2010-12-10,2011-12-04,
