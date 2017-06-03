@@ -24,7 +24,7 @@ class ItemTest < Minitest::Test
   def test_it_returns_id
     result = @new_instance.id
 
-    assert_equal "999999", result
+    assert_equal 999999, result
   end
 
   def test_it_returns_name

@@ -44,4 +44,15 @@ class SalesAnalystTest < Minitest::Test
     result = @sa.merchant_items_by_count.reduce(:+)
     assert_equal 1367, result
   end
+
+  def test_merchants_with_high_item_count
+    skip
+    result = @sa.merchants_with_high_item_count
+    assert_equal 52, result.count
+  end
+
+  def test_average_item_price_for_merchant
+    result = @sa.average_item_price_for_merchant(12334141)
+    assert_equal 1200, result
+  end
 end

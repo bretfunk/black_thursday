@@ -7,8 +7,8 @@ class Item
 
   def initialize(params, ir)
     @ir = ir
-    @id = params[:id].to_s
-    @name = params[:name].to_s
+    @id = params[:id].to_i
+    @name = params[:name]
     @description = params[:description]
     @unit_price = params[:unit_price].to_f
     @created_at = params[:created_at]

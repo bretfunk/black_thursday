@@ -31,7 +31,7 @@ class MerchantRepoTest < Minitest::Test
 
   def test_find_by_name
     result = @new_instance.find_by_name("HeadyMamaCreations")
-    assert_equal "12337321", result.id
+    assert_equal 12337321, result.id
   end
 
   def test_fake_name
