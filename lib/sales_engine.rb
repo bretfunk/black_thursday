@@ -1,15 +1,17 @@
 require_relative 'merchant_repository'
 require_relative 'item_repository'
+require_relative 'sales_analyst'
 require 'csv' #this might not be needed
 require 'simplecov'
 require 'pry'
 
 class SalesEngine
-  attr_accessor :items, :merchants
+  attr_accessor :items, :merchants, :sales_analyst
 
   def initialize(files)
-    @items = ItemRepository.new(files[:items], self )
-    @merchants = MerchantRepository.new(files[:merchants], self )
+    @items = ItemRepository.new(files[:items], self)
+    @merchants = MerchantRepository.new(files[:merchants], self)
+    @sales_analyst = SalesAnalyst.new(self)
   end
 
   def self.from_csv(files)
@@ -26,5 +28,5 @@ class SalesEngine
   end
 
   se = SalesEngine.from_csv({items: './data/items.csv', merchants: './data/merchants.csv'})
-  binding.pry
+  #binding.pry
 end
