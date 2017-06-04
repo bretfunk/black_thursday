@@ -1,7 +1,7 @@
 require_relative 'test_helper'
 require_relative '../lib/transaction'
 
-class TransactionTest<Minitest::Test
+class TransactionTest < Minitest::Test
 
   def setup
     @new_instance = Transaction.new({
