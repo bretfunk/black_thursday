@@ -1,6 +1,7 @@
 require 'bigdecimal'
 require 'bigdecimal/util'
 require 'pry'
+require 'simplecov'
 
 class Item
 

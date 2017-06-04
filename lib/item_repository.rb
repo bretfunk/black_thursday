@@ -1,6 +1,7 @@
 require_relative 'item'
 require 'csv'
 require 'pry'
+require 'simplecov'
 
 class ItemRepository
 

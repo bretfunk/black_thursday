@@ -6,12 +6,13 @@ require 'simplecov'
 require 'pry'
 
 class SalesEngine
-  attr_accessor :items, :merchants, :sales_analyst
+  attr_accessor :items, :merchants, :sales_analyst, :invoices
 
   def initialize(files)
     @items = ItemRepository.new(files[:items], self)
     @merchants = MerchantRepository.new(files[:merchants], self)
     @sales_analyst = SalesAnalyst.new(self)
+    @invoices = InvoiceRepository.new(files[:invoices], self)
   end
 
   def self.from_csv(files)
