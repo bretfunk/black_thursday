@@ -10,7 +10,7 @@ class ItemTest < Minitest::Test
       :id          => 999999,
       :name        => "Pencil",
       :description => "You can use it to write things",
-      :unit_price  => 3,
+      :unit_price  => 300,
       :created_at  => Time.now,
       :updated_at  => Time.now,
       :merchant_id => 273468
@@ -24,7 +24,7 @@ class ItemTest < Minitest::Test
   def test_it_returns_id
     result = @new_instance.id
 
-    assert_equal "999999", result
+    assert_equal 999999, result
   end
 
   def test_it_returns_name
@@ -42,7 +42,7 @@ class ItemTest < Minitest::Test
   def test_it_returns_unit_price
     result = @new_instance.unit_price
 
-    assert_equal 3.0, result
+    assert_equal 0.3e1, result
   end
 
   def test_it_can_return_created_at_value
@@ -62,7 +62,7 @@ class ItemTest < Minitest::Test
   def test_it_converts_unit_price_to_float
     result = @new_instance.unit_price_to_dollars
 
-    assert_equal 3.00, result
+    assert_equal 3, result
   end
 
 end

@@ -4,7 +4,7 @@ class Merchant
   attr_reader :id, :name, :mr
 
   def initialize(attributes, mr)
-    @id = attributes[:id]
+    @id = attributes[:id].to_i
     @name = attributes[:name]
     @mr = mr
   end
