@@ -4,21 +4,22 @@ require_relative '../lib/merchant'
 
 class MerchantTest < Minitest::Test
 
-  def test_that_merchant_exists
-    m = Merchant.new({:id => 5, :name => "Turing School"}, "mr")
+  attr_reader :new_instance
 
-    assert_instance_of Merchant, m
+  def setup
+    @new_instance = Merchant.new({:id => 5, :name => "Turing School"}, "mr")
+
+  end
+
+  def test_that_merchant_exists
+    assert_instance_of Merchant, new_instance
   end
 
   def test_it_returns_id_of_merchant
-    m = Merchant.new({:id => 5, :name => "Turing School"}, "mr")
-
-    assert_equal 5, m.id
+    assert_equal 5, new_instance.id
   end
 
   def test_it_returns_name_of_merchant
-    m = Merchant.new({:id => 5, :name => "Turing School"}, "mr")
-
-    assert_equal "Turing School", m.name
+    assert_equal "Turing School", new_instance.name
   end
 end

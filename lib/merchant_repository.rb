@@ -1,6 +1,7 @@
 require_relative 'merchant'
 require 'csv'
 require 'pry'
+require 'simplecov'
 
 class MerchantRepository
 

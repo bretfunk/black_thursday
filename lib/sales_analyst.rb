@@ -1,5 +1,4 @@
 require 'pry'
-require 'bigdecimal'
 
 class SalesAnalyst
   attr_reader :se
@@ -49,7 +48,7 @@ class SalesAnalyst
 
   def golden_items
     se.items.all.find_all do |item|
-        item.unit_price > average_average_price_per_merchant + (standard_deviation * 2)
+      item.unit_price > average_average_price_per_merchant + (standard_deviation * 2)
     end
   end
 end
