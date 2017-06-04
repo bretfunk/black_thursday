@@ -51,8 +51,15 @@ class SalesAnalystTest < Minitest::Test
     assert_equal 52, result.count
   end
 
+#probably high
   def test_average_item_price_for_merchant
-    result = @sa.average_item_price_for_merchant(12334141)
+    result = @sa.average_item_price_for_merchant(12334135)
     assert_equal 1200, result
+  end
+
+#probably high
+  def test_average_average_price_per_merchant
+    result = @sa.average_average_price_per_merchant
+    assert_equal nil, result
   end
 end

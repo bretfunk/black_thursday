@@ -35,11 +35,16 @@ class SalesAnalyst
   def average_item_price_for_merchant(merch_id)
     array = []
     current_merch = se.merchants.all.find { |merchant| merchant.id == merch_id }
-    current_merch.items.map { |item| array << item.unit_price.to_i }
-    BigDecimal(array.reduce(:+) / array.length).truncate
+    current_merch.items.map do |item|
+      array << item.unit_price.to_i
+    end
+    array.reduce(:+) / array.length
   end
 
   def average_average_price_per_merchant
+    array = []
+    se.merchants.all.map { |merchant| array << average_item_price_for_merchant(merchant.id) }
+    array.reduce(:+) / se.merchants.all.count
   end
 
   def golden_items
