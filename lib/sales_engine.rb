@@ -2,7 +2,7 @@ require_relative 'merchant_repository'
 require_relative 'item_repository'
 require_relative 'sales_analyst'
 require 'csv' #this might not be needed
-require 'simplecov'
+# require 'simplecov'
 require 'pry'
 
 class SalesEngine

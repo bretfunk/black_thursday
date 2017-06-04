@@ -1,8 +1,6 @@
-require 'minitest'
-require 'minitest/autorun'
-require 'minitest/pride'
+require_relative 'test_helper'
 require_relative '../lib/merchant'
-require 'simplecov'
+# require 'simplecov'
 
 class MerchantTest < Minitest::Test
 
