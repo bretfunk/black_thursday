@@ -5,13 +5,13 @@ class TransactionTest<Minitest::Test
 
   def setup
     @new_instance = Transaction.new({
-      :id                          => 999999,
-      :invoice_id                  => 888888,
-      :credit_card_number          => "5454545454545454",
-      :credit_card_expiration_date => "1117",
-      :result                      => "success",
-      :created_at                  => Time.now,
-      :updated_at                  => Time.now
+      id:                           999999,
+      invoice_id:                   888888,
+      credit_card_number:           "5454545454545454",
+      credit_card_expiration_date:  "1117",
+      result:                       "success",
+      created_at:                   Time.now,
+      updated_at:                   Time.now
     }, "self")
   end
 

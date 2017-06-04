@@ -18,7 +18,7 @@ class Transaction
   end
 
   def transaction_records
-    tr.pass_to_se(purchase)##may need to change name
+    tr.pass_to_se(id)##may need to change name
   end
 
 end
