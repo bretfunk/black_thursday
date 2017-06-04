@@ -11,7 +11,7 @@ class Item
     @id = params[:id].to_i
     @name = params[:name]
     @description = params[:description]
-    @unit_price = (to_big_decimal(params[:unit_price].to_f)) unless params[:unit_price] == nil
+    @unit_price = (to_big_decimal(params[:unit_price].to_f) / 100) unless params[:unit_price] == nil
     @created_at = params[:created_at]
     @updated_at = params[:updated_at]
     @merchant_id = params[:merchant_id].to_i

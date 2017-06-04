@@ -46,20 +46,24 @@ class SalesAnalystTest < Minitest::Test
   end
 
   def test_merchants_with_high_item_count
-    skip
+    skip #for time
     result = @sa.merchants_with_high_item_count
     assert_equal 52, result.count
   end
 
-#probably high
   def test_average_item_price_for_merchant
     result = @sa.average_item_price_for_merchant(12334135)
-    assert_equal 1200, result
+    assert_equal 14, result
   end
 
-#probably high
   def test_average_average_price_per_merchant
     result = @sa.average_average_price_per_merchant
-    assert_equal nil, result
+    assert_equal 350, result
+  end
+
+  def test_golden_items
+    skip #for time
+    result = @sa.golden_items
+    assert_equal 114, result.count
   end
 end
