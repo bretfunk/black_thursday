@@ -6,10 +6,10 @@ require_relative '../lib/merchant_repository'
 
 class MerchantRepoTest < Minitest::Test
 
-  assert_reader :new_instance
+  attr_reader :new_instance
 
   def setup
-    new_instance = MerchantRepository.new("./data/merchants.csv", "se")
+    @new_instance = MerchantRepository.new("./data/merchants.csv", "se")
   end
 
   def test_class_exists
