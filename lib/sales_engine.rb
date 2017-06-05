@@ -3,7 +3,6 @@ require_relative 'item_repository'
 require_relative 'sales_analyst'
 require_relative 'invoice_repository'
 require 'csv' #this might not be needed
-# require 'simplecov'
 require 'pry'
 
 class SalesEngine

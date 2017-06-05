@@ -1,5 +1,4 @@
 require 'pry'
-require 'simplecov'
 
 class Merchant
   attr_reader :id, :name, :mr
