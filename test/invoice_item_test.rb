@@ -1,0 +1,75 @@
+
+require_relative 'test_helper'
+require_relative '../lib/invoice_item'
+
+
+class InvoiceItemTest < Minitest::Test
+
+  def setup
+    @new_instance = InvoiceItem.new({
+      id:                 999999,
+      item_id:            111111,
+      invoice_id:         234234,
+      quantity:           34,
+      unit_price:         500,
+      created_at:         Time.now,
+      updated_at:         Time.now,
+      }, "self")
+    end
+
+  def test_invoice_item_class_exists
+    assert_instance_of InvoiceItem, @new_instance
+  end
+
+  def test_it_returns_id
+    result = @new_instance.id
+
+    assert_equal 999999, result
+  end
+
+  def test_it_returns_item_id
+    result = @new_instance.item_id
+
+    assert_equal 111111, result
+  end
+
+  def test_it_returns_invoice_id
+    result = @new_instance.invoice_id
+
+    assert_equal 234234, result
+  end
+
+  def test_it_returns_quantity
+    result = @new_instance.quantity
+
+    assert_equal 34, result
+  end
+
+  def test_it_returns_unit_price
+    result = @new_instance.unit_price
+
+    assert_equal 0.5E1, result
+  end
+
+  def test_it_can_return_created_at_value
+    time = Time.now
+    result = @new_instance.created_at
+
+    refute_equal result, time
+  end
+
+  def test_it_can_return_updated_at_value
+    time = Time.now
+    result = @new_instance.updated_at
+
+    refute_equal result, time
+  end
+
+  def test_it_converts_unit_price_to_float
+    result = @new_instance.unit_price_to_dollars
+
+    assert_equal 5, result
+  end
+
+
+end
