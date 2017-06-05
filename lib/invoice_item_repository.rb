@@ -35,10 +35,4 @@ class InvoiceItemRepository
 ###pass to se method
   def pass_to_se(id)
     @se.find_by_id(id)
-  end
-
-  def inspect
-      "#<#{self.class} #{@merchants.size} rows>"
-  end
-
 end
