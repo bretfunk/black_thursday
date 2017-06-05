@@ -30,7 +30,7 @@ class InvoiceItem
   end
 
   def invoice_item_records
-    irr.pass_to_se(id)
+    iir.pass_to_se(id)
   end
 
 end
