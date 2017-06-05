@@ -19,15 +19,6 @@ class ItemRepository
     end
   end
 
-  # def find_by_id(item_id)
-  #   item_id = item_id.to_s
-  #   item = nil
-  #   @all.map do |word|
-  #     item = word if item_id == word.id
-  #   end
-  #   item
-  # end
-
   def find_by_id(item_id)
     @all.find { |item| item.id.to_i == item_id.to_i }
   end
@@ -45,27 +36,9 @@ class ItemRepository
     @all.find_all { |item| price.to_f == item.unit_price.to_f }
   end
 
-#array in arrays
-  # def find_all_by_price_in_range(range)
-  #   array = []
-  #   range.to_a.map do |num|
-  #     array << find_all_by_price(num)
-  #   end
-  #   array.reject { |units| units.empty? }
-  # end
-
-  #stillneed to do
   def find_all_by_price_in_range(range)
-    range.find_all { |num| find_all_by_price(num) }
+    @all.find_all { |item| item.unit_price.to_f >= range.begin.to_f && item.unit_price.to_f <= range.end.to_f }
   end
-
-
-  # def find_all_by_price_in_range(range)
-  #   #new
-  #   @all.select do |item|
-  #     range.to_s.include? (item.unit_price)
-  #   end
-  # end
 
   def find_all_by_merchant_id(merch_id)
     @all.find_all { |item| item.merchant_id == merch_id.to_i }
