@@ -1,7 +1,6 @@
 require_relative 'item'
 require 'csv'
 require 'pry'
-require 'simplecov'
 
 class ItemRepository
 
@@ -74,6 +73,10 @@ class ItemRepository
 
   def pass_to_se(id)
    @se.find_merchant_by_item_id(id)
+  end
+
+  def inspect
+  "#<#{self.class} #{@merchants.size} rows>"
   end
 
 end
