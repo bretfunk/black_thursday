@@ -3,7 +3,7 @@ require 'time'
 
 class Customer
 
-  attr_reader :id, :first_name, :last_name, :created_at, :updated_at
+  attr_reader :cr, :id, :first_name, :last_name, :created_at, :updated_at
 
   def initialize(params, cr)
     @cr         = cr
@@ -16,6 +16,10 @@ class Customer
 
   def customer_records
     cr.pass_to_se(id)
+  end
+
+  def merchants
+    cr.merchants_pass_to_se(id)
   end
 
 end

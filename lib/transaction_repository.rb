@@ -40,8 +40,12 @@ class TransactionRepository
     @se.find_by_id(id)
   end
 
-  def inspect
-    "#<#{self.class} #{@merchants.size} rows>"
+  # def inspect
+  #   "#<#{self.class} #{@merchants.size} rows>"
+  # end
+
+  def pass_to_tr(invoice_id)
+
   end
 
 end

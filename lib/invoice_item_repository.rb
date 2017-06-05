@@ -37,8 +37,8 @@ class InvoiceItemRepository
     @se.find_by_id(id)
   end
 
-  def inspect
-      "#<#{self.class} #{@merchants.size} rows>"
-  end
+  # def inspect
+  #     "#<#{self.class} #{@merchants.size} rows>"
+  # end
 
 end

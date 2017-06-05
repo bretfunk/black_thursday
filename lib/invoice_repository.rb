@@ -50,8 +50,8 @@ class InvoiceRepository
     @se.find_customer_by_invoice(customer_id)
   end
 
-  def inspect
-  "#<#{self.class} #{@merchants.size} rows>"
-  end
+  # def inspect
+  # "#<#{self.class} #{@merchants.size} rows>"
+  # end
 
 end

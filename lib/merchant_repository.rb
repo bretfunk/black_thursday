@@ -33,15 +33,19 @@ class MerchantRepository
     @all.find_all { |merchant| merchant.name.upcase.include?(name.upcase) }
   end
 
-  def pass_to_se(id)
-		@se.find_items_by_merchant_id(id)
+  def pass_to_se(merch_id)
+		@se.find_items_by_merchant_id(merch_id)
 	end
 
-  def invoices_pass_to_se(id)
-    @se.find_invoices_by_merchant_id(id)
+  def invoices_pass_to_se(merch_id)
+    @se.find_invoices_by_merchant_id(merch_id)
   end
 
-  def inspect
-  "#<#{self.class} #{@merchants.size} rows>"
+  def customers_pass_to_se(merch_id)
+    @se.find_customers_by_merchant(merch_id)
   end
+
+  # def inspect
+  # "#<#{self.class} #{@merchants.size} rows>"
+  # end
 end

@@ -17,4 +17,8 @@ class Merchant
     mr.invoices_pass_to_se(id)
   end
 
+  def customers
+    mr.customers_pass_to_se(id)
+  end
+
 end

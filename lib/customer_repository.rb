@@ -37,8 +37,12 @@ class CustomerRepository
     @se.find_by_id(id)
   end
 
-  def inspect
-    "#<#{self.class} #{@merchants.size} rows>"
+  def merchants_pass_to_se(customer_id)
+    @se.find_merchants_by_customer(customer_id)
   end
+
+  # def inspect
+  #   "#<#{self.class} #{@merchants.size} rows>"
+  # end
 
 end

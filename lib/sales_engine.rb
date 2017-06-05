@@ -55,6 +55,27 @@ class SalesEngine
     @customers.find_by_id(customer_id)
   end
 
+  def find_invoice_by_transaction(invoice_id)
+    @invoices.find_by_id(invoice_id)
+  end
+
+  def find_customers_by_merchant(merch_id)
+    array = []
+    merch_invoices = @invoices.find_all_by_merchant_id(merch_id)
+    merch_invoices.map {|invoice| array << @customers.find_by_id(invoice.customer_id)}
+    array
+  end
+
+  def find_merchants_by_customer(customer_id)
+    array = []
+    customer_invoices = @invoices.find_all_by_customer_id(customer_id)
+    customer_invoices.map do |invoice|
+      array << @merchants.find_by_id(invoice.merchant_id)
+    end
+    array
+  end
+
+
 
 
   # se = SalesEngine.from_csv({items: './data/items.csv', merchants: './data/merchants.csv'})

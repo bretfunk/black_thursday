@@ -69,14 +69,32 @@ class SalesEngineTest<Minitest::Test
   end
 
   def test_find_items_by_invoice
+    skip
   end
 
   def test_find_transactions_by_invoices
+    skip
   end
 
   def test_find_customers_by_invoice
+    skip
   end
 
+#dont know if it is correct!!
+  def test_find_invoice_by_transaction
+    merchant = se.merchants.find_by_id(12335938)
+    customers = merchant.invoices
+
+    assert_equal 16, customers.length
+  end
+
+#don't know if this is correct!!
+  def test_find_merchants_by_customer
+    customer = se.customers.find_by_id(30)
+    merchants = customer.merchants
+
+    assert_equal 5, merchants.length
+  end
 
 
 end

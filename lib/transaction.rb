@@ -21,4 +21,8 @@ class Transaction
     tr.pass_to_se(id)##may need to change name
   end
 
+  def invoice
+    pass_to_tr(invoice_id)
+  end
+
 end
