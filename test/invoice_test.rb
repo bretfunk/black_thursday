@@ -13,8 +13,8 @@ class InvoiceTest < Minitest::Test
       customer_id:    1,
       merchant_id:    12335938,
       status:         "pending",
-      created_at:     2009-02-07,
-      updated_at:     2014-03-15
+      created_at:     "2009-02-07",
+      updated_at:     "2014-03-15"
       }, "self")
   end
 
@@ -43,19 +43,21 @@ class InvoiceTest < Minitest::Test
   def test_status_exists
     result = new_instance.status
 
-    assert_equal "pending", result
+    assert_equal :pending, result
   end
 
 
   def test_created_at_exists
     result = new_instance.created_at
+    date = '2009-02-07 00:00:00 -0700'
 
-    assert_equal 2009-02-07, result
+    assert_equal date, result.to_s
   end
 
   def test_updated_at_exists
     result = new_instance.updated_at
-    
-    assert_equal 2014-03-15, result
+    date = '2014-03-15 00:00:00 -0600'
+
+    assert_equal date, result.to_s
   end
 end

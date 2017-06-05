@@ -1,0 +1,45 @@
+{
+  "Unit Tests": {
+    "coverage": {
+      "/Users/bret/Desktop/1module/projects/black_thursday/lib/invoice_item.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        9,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1496697646
+  }
+}

@@ -1,6 +1,7 @@
 # require 'bigdecimal'
 # require 'bigdecimal/util'
 require 'pry'
+require 'time'
 
 class Invoice
 
@@ -11,12 +12,26 @@ class Invoice
     @id = params[:id].to_i
     @customer_id = params[:customer_id].to_i
     @merchant_id = params[:merchant_id].to_i
-    @status = params[:status]
-    @created_at = params[:created_at]
-    @updated_at = params[:updated_at]
+    @status = params[:status].to_sym
+    @created_at = Time.parse(params[:created_at])
+    @updated_at = Time.parse(params[:updated_at])
   end
+
 
   def merchant
     ir.pass_to_se(merchant_id)
   end
+
+  def items
+    ir.pass_items_to_se(id)
+  end
+
+  def transactions
+    ir.pass_transactions_to_se(id)
+  end
+
+  def customer
+    ir.pass_customer_to_se(customer_id)
+  end
+
 end
