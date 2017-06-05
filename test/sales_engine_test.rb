@@ -9,17 +9,27 @@ class SalesEngineTest<Minitest::Test
     @se = SalesEngine.from_csv({
       items:      "./data/items.csv",
       merchants:  "./data/merchants.csv",
-      invoices:   './data/invoices.csv'})
+      invoices:   './data/invoices.csv',
+      customers:  './data/customers.csv',
+      invoice_items: './data/invoice_items.csv',
+      transactions: './data/transactions.csv'})
+
   end
 
   def test_it_exists
     items = se.items
     merchants = se.merchants
     invoices = se.invoices
+    invoice_items = se.invoice_items
+    transactions = se.transactions
+    customers = se.customers
 
     assert_instance_of ItemRepository, items
     assert_instance_of MerchantRepository, merchants
     assert_instance_of InvoiceRepository, invoices
+    assert_instance_of InvoiceItemRepository, invoice_items
+    assert_instance_of TransactionRepository, transactions
+    assert_instance_of CustomerRepository, customers
   end
 
   def test_items_can_be_searched_by_name
@@ -56,6 +66,15 @@ class SalesEngineTest<Minitest::Test
     invoice = se.invoices.find_by_id(1)
     result = invoice.merchant
     assert_equal 12335938, result.id
+  end
+
+  def test_find_items_by_invoice
+  end
+
+  def test_find_transactions_by_invoices
+  end
+
+  def test_find_customers_by_invoice
   end
 
 

@@ -11,6 +11,7 @@ class InvoiceRepository
     invoice_collection(input)
   end
 
+
   def invoice_collection(input)
     input.map do |row|
     @all << Invoice.new({:id => row[0], :customer_id => row[1], :merchant_id => row[2], :status => row[3], :created_at => row[4], :updated_at => row[5]}, self)
@@ -30,11 +31,23 @@ class InvoiceRepository
   end
 
   def find_all_by_status(status)
-    all.find_all { |invoice| invoice.status == status.to_s }
+    all.find_all { |invoice| invoice.status == status.to_sym }
   end
 
   def pass_to_se(id)
     @se.find_merchant_by_invoice_id(id)
+  end
+
+  def pass_items_to_se(id)
+    @se.find_items_by_invoice(id)
+  end
+
+  def pass_transactions_to_se(id)
+    @se.find_transactions_by_invoice(id)
+  end
+
+  def pass_customer_to_se(customer_id)
+    @se.find_customer_by_invoice(customer_id)
   end
 
   def inspect

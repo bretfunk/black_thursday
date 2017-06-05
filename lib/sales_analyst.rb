@@ -8,6 +8,10 @@ attr_reader :se
     @se = se
   end
 
+  def to_big_decimal(price)
+    BigDecimal.new(price, price.to_s.length)
+  end
+
   def average_items_per_merchant
     (se.items.all.count.to_f / se.merchants.all.count.to_f).round(2)
   end
@@ -18,7 +22,7 @@ attr_reader :se
     array
   end
 
-  def average_items_per_merchant_standard_devation
+  def average_items_per_merchant_standard_deviation
     ipm_standard_deviation
   end
 
@@ -36,26 +40,26 @@ attr_reader :se
     array = []
     current_merch = se.merchants.all.find { |merchant| merchant.id == merch_id }
     current_merch.items.map do |item|
-      array << item.unit_price.to_i
+      array << item.unit_price.to_f
     end
-    array.reduce(:+) / array.length
+    to_big_decimal((array.reduce(:+) / array.length).round(2))
   end
 
   def average_average_price_per_merchant
     array = []
     se.merchants.all.map { |merchant| array << average_item_price_for_merchant(merchant.id) }
-    array.reduce(:+) / se.merchants.all.count
+    (array.reduce(:+) / se.merchants.all.count).round(2)
+    #to_big_decimal(avg_ppm.to_i * 1000)
   end
 
   def golden_items
     se.items.all.find_all do |item|
-      item.unit_price > average_average_price_per_merchant + (ipm_standard_deviation * 2)
+      item.unit_price >= average_average_price_per_merchant + (ipm_standard_deviation + ipm_standard_deviation)
     end
   end
 
   def average_invoices_per_merchant
       (se.invoices.all.count.to_f / se.merchants.all.count.to_f).round(2)
-
   end
 
   def merchant_invoices_by_count
@@ -105,7 +109,7 @@ attr_reader :se
   def invoices_per_day_hash
     counts = Hash.new(0)
     se.invoices.all.map do |invoice|
-      day = invoice.created_at
+      day = invoice.created_at.to_s
       counts[Date.parse(day).strftime("%A")] += 1
     end
     counts
