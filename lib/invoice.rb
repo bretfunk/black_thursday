@@ -15,4 +15,8 @@ class Invoice
     @created_at = params[:created_at]
     @updated_at = params[:updated_at]
   end
+
+  def merchant
+    ir.pass_to_se(merchant_id)
+  end
 end

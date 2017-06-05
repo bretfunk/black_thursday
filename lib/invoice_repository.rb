@@ -18,22 +18,27 @@ class InvoiceRepository
   end
 
   def find_by_id(id)
-    all.find { |invoice| invoice.id == id.to_i }
+    all.find { |invoice| invoice.id.to_i == id.to_i }
   end
 
   def find_all_by_customer_id(customer_id)
-    all.find_all { |invoice| invoice.customer_id == customer_id.to_i }
+    all.find_all { |invoice| invoice.customer_id.to_i == customer_id.to_i }
   end
 
   def find_all_by_merchant_id(merch_id)
-    all.find_all { |invoice| invoice.merchant_id == merch_id.to_i }
+    all.find_all { |invoice| invoice.merchant_id.to_i == merch_id.to_i }
   end
 
   def find_all_by_status(status)
     all.find_all { |invoice| invoice.status == status.to_s }
   end
 
+  def pass_to_se(id)
+    @se.find_merchant_by_invoice_id(id)
+  end
+
   def inspect
   "#<#{self.class} #{@merchants.size} rows>"
   end
+
 end

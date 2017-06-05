@@ -37,6 +37,9 @@ class MerchantRepository
 		@se.find_items_by_merchant_id(id)
 	end
 
+  def invoices_pass_to_se(id)
+    @se.find_invoices_by_merchant_id(id)
+
   def inspect
   "#<#{self.class} #{@merchants.size} rows>"
   end
