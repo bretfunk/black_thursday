@@ -28,6 +28,6 @@ class SalesEngine
     @items.find_all_by_merchant_id(id)
   end
 
-  se = SalesEngine.from_csv({items: './data/items.csv', merchants: './data/merchants.csv'})
+  # se = SalesEngine.from_csv({items: './data/items.csv', merchants: './data/merchants.csv'})
   #binding.pry
 end
