@@ -8,9 +8,9 @@ class InvoiceItemRepository
   attr_reader :input, :all, :se
 
   def initialize(csv, se)
-    @se = se
+    @se    = se
     @input = CSV.open csv, headers: true, header_converters: :symbol
-    @all = []
+    @all   = []
     invoice_item_collection(input)
   end
 
