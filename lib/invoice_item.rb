@@ -14,10 +14,9 @@ class InvoiceItem
     @invoice_id = params[:invoice_id].to_i
     @quantity   = params[:quantity]
     @unit_price = (to_big_decimal(params[:unit_price].to_f) / 100) unless params[:unit_price] == nil
-    @created_at = params[:created_at]
-    @updated_at = params[:updated_at]
+    @created_at = Time.parse(params[:created_at].to_s)
+    @updated_at = Time.parse(params[:updated_at].to_s)
   end
-
 
   def unit_price_to_dollars
     @unit_price.to_f.round(2)

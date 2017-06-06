@@ -32,8 +32,8 @@ class InvoiceItemRepository
     @all.find_all { |invoice_item| invoice_item.invoice_id.to_i == inv_id.to_i }
   end
 
-  # def inspect
-  #     "#<#{self.class} #{@merchants.size} rows>"
-  # end
+  def inspect
+      "#<#{self.class} #{@all.size} rows>"
+  end
 
 end

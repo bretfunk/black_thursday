@@ -45,7 +45,7 @@ class MerchantRepository
     @se.find_customers_by_merchant(merch_id)
   end
 
-  # def inspect
-  # "#<#{self.class} #{@merchants.size} rows>"
-  # end
+  def inspect
+  "#<#{self.class} #{@all.size} rows>"
+  end
 end

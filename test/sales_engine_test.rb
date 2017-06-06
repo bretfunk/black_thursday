@@ -112,6 +112,13 @@ class SalesEngineTest<Minitest::Test
     assert_equal 5, merchants.length
   end
 
+  def test_find_customers_by_merchant
+    merchant = se.merchants.find_by_id(12334194)
+    result = merchant.customers
+
+    assert_equal 12, result.length
+  end
+
   def test_is_invoice_paid?
     invoice = se.invoices.find_by_id(20)
     result = invoice.is_paid_in_full?

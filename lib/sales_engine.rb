@@ -8,6 +8,7 @@ require_relative 'customer_repository'
 require 'csv' #this might not be needed
 require 'pry'
 require 'time'
+require 'bigdecimal'
 
 class SalesEngine
   attr_accessor :items, :merchants, :sales_analyst, :invoices, :invoice_items, :transactions, :customers
@@ -62,9 +63,11 @@ class SalesEngine
 
   def find_customers_by_merchant(merch_id)
     array = []
-    merch_invoices = @invoices.find_all_by_merchant_id(merch_id)
-    merch_invoices.map {|invoice| array << @customers.find_by_id(invoice.customer_id)}
-    array
+     merch_invoices = @invoices.find_all_by_merchant_id(merch_id)
+    merch_invoices.map do |invoice|
+      array << @customers.find_by_id(invoice.customer_id)
+    end
+    array.uniq
   end
 
   def find_merchants_by_customer(customer_id)
@@ -82,15 +85,9 @@ class SalesEngine
   end
 
   def check_invoice_total(id)
-    total_items = @invoice_items.find_all_by_invoice_id(id)
-     total_prices = total_items.map {|item| item.unit_price}
-     total_prices.reduce(:+).to_i
+    total_items = @invoice_items.find_all_by_invoice_id(id) if is_invoice_paid?(id)
+    total_prices = total_items.map {|item| item.unit_price}
+    total_prices.reduce(:+).to_i
   end
-
-
-
-
-  # se = SalesEngine.from_csv({items: './data/items.csv', merchants: './data/merchants.csv'})
-  #binding.pry
 
 end

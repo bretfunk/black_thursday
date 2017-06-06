@@ -10,15 +10,11 @@ class Transaction
     @tr                          = tr
     @id                          = params[:id].to_i
     @invoice_id                  = params[:invoice_id].to_i
-    @credit_card_number          = params[:credit_card_number]
+    @credit_card_number          = params[:credit_card_number].to_i
     @credit_card_expiration_date = params[:credit_card_expiration_date]
     @result                      = params[:result]
-    @created_at                  = params[:created_at]
-    @updated_at                  = params[:updated_at]
-  end
-
-  def transaction_records
-    tr.pass_to_se(id)##may need to change name
+    @created_at                  = Time.parse(params[:created_at].to_s)
+    @updated_at                  = Time.parse(params[:updated_at].to_s)
   end
 
   def invoice

@@ -10,12 +10,8 @@ class Customer
     @id         = params[:id].to_i
     @first_name = params[:first_name]
     @last_name  = params[:last_name]
-    @created_at = params[:created_at]
-    @updated_at = params[:updated_at]
-  end
-
-  def customer_records
-    cr.pass_to_se(id)
+    @created_at = Time.parse(params[:created_at].to_s)
+    @updated_at = Time.parse(params[:updated_at].to_s)
   end
 
   def merchants

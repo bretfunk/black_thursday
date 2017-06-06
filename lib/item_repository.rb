@@ -58,8 +58,8 @@ class ItemRepository
    @se.find_merchant_by_item_id(id)
   end
 
-  # def inspect
-  # "#<#{self.class} #{@merchants.size} rows>"
-  # end
+  def inspect
+  "#<#{self.class} #{@all.size} rows>"
+  end
 
 end

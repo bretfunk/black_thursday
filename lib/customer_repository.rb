@@ -23,26 +23,20 @@ class CustomerRepository
   end
 
   def find_all_by_first_name(fname)
-    @all.find_all { |customer| customer.first_name == fname.capitalize  }
+    @all.find_all { |customer| customer.first_name.upcase.include?(fname.upcase) }
   end
 
   def find_all_by_last_name(lname)
-    @all.find_all { |customer| customer.last_name == lname.capitalize }
+    @all.find_all { |customer| customer.last_name.upcase.include?(lname.upcase) }
   end
 
-
-###pass to se method
-
-  def pass_to_se(id)
-    @se.find_by_id(id)
-  end
 
   def merchants_pass_to_se(customer_id)
     @se.find_merchants_by_customer(customer_id)
   end
 
-  # def inspect
-  #   "#<#{self.class} #{@merchants.size} rows>"
-  # end
+  def inspect
+    "#<#{self.class} #{@all.size} rows>"
+  end
 
 end

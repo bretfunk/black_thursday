@@ -49,12 +49,11 @@ attr_reader :se
     array = []
     se.merchants.all.map { |merchant| array << average_item_price_for_merchant(merchant.id) }
     (array.reduce(:+) / se.merchants.all.count).round(2)
-    #to_big_decimal(avg_ppm.to_i * 1000)
   end
 
   def golden_items
     se.items.all.find_all do |item|
-      item.unit_price >= average_average_price_per_merchant + (ipm_standard_deviation + ipm_standard_deviation)
+      item.unit_price >= average_average_price_per_merchant + (ipm_standard_deviation + ipm_standard_deviation).to_i * 1000
     end
   end
 

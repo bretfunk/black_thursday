@@ -59,8 +59,8 @@ class InvoiceRepository
     @se.check_invoice_total(id)
   end
 
-  # def inspect
-  # "#<#{self.class} #{@merchants.size} rows>"
-  # end
+  def inspect
+  "#<#{self.class} #{@all.size} rows>"
+  end
 
 end
