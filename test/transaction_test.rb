@@ -34,7 +34,7 @@ class TransactionTest < Minitest::Test
   def test_it_returns_credit_card_number
     result = @new_instance.credit_card_number
 
-    assert_equal "5454545454545454", result
+    assert_equal 5454545454545454, result
   end
 
   def test_it_returns_credit_card_expiration_date

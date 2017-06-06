@@ -34,13 +34,15 @@ class TransactionRepositoryTest < Minitest::Test
   def test_it_returns_empty_transaction_result_by_entering_invalid_invoice_id
     result = @new_instance.find_all_by_invoice_id(00)
 
-    assert_nil result
+    assert_equal [], result
   end
 
   def test_it_returns_transaction_result_by_entering_valid_invoice_id
     result = @new_instance.find_all_by_invoice_id(2179)
 
-    assert_equal 1, result.id
+    assert_equal Array, result.class
+    assert_equal 2, result.length
+    assert_equal Transaction, result.first.class
   end
 
   def test_it_returns_empty_result_for_invalid_credit_card_transaction
@@ -50,7 +52,7 @@ class TransactionRepositoryTest < Minitest::Test
   end
 
   def test_it_returns_transaction_result_for_valid_credit_card_number_search
-    result = @new_instance.find_all_by_credit_card_number("4068631943231473")
+    result = @new_instance.find_all_by_credit_card_number(4848466917766329)
 
     assert_equal 1, result.length
   end
@@ -70,7 +72,7 @@ class TransactionRepositoryTest < Minitest::Test
   def test_find_all_by_result_returns_empty_for_invalid_transaction_result_entry
     result = @new_instance.find_all_by_result("meh")
 
-    assert_equal 0, result.length 
+    assert_equal 0, result.length
   end
 
 
