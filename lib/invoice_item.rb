@@ -29,8 +29,6 @@ class InvoiceItem
     BigDecimal.new(price, price.to_s.length)
   end
 
-  def invoice_item_records
-    iir.pass_to_se(id)
-  end
+
 
 end

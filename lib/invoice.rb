@@ -34,4 +34,12 @@ class Invoice
     ir.pass_customer_to_se(customer_id)
   end
 
+  def is_paid_in_full?
+    ir.pass_invoice_to_se_for_paid(id)
+  end
+
+  def total
+    ir.pass_invoice_to_se_for_total(id)
+  end
+
 end

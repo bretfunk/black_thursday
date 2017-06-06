@@ -24,7 +24,7 @@ class TransactionRepository
   end
 
   def find_all_by_invoice_id(inv_id)
-    @all.find { |transaction| transaction.invoice_id.to_i == inv_id.to_i }
+    @all.find_all { |transaction| transaction.invoice_id == inv_id }
   end
 
   def find_all_by_credit_card_number(card_num)
@@ -35,17 +35,12 @@ class TransactionRepository
     @all.find_all { |transaction| transaction.result == tran_result}
   end
 
-  ###pass to se method
-  def pass_to_se(id)
-    @se.find_by_id(id)
+  def pass_invoice_id_to_se(invoice_id)
+    @se.find_invoice_by_transaction(invoice_id)
   end
 
   # def inspect
   #   "#<#{self.class} #{@merchants.size} rows>"
   # end
-
-  def pass_to_tr(invoice_id)
-
-  end
 
 end

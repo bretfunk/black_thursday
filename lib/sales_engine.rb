@@ -44,7 +44,8 @@ class SalesEngine
   end
 
   def find_items_by_invoice(id)
-    @invoice_items.find_all_by_invoice_id(id)
+    invoice_items = @invoice_items.find_all_by_invoice_id(id)
+    @items.find_items_by_invoice_id(invoice_items)
   end
 
   def find_transactions_by_invoice(id)
@@ -73,6 +74,18 @@ class SalesEngine
       array << @merchants.find_by_id(invoice.merchant_id)
     end
     array
+  end
+
+  def is_invoice_paid?(id)
+    invoice_transactions = @transactions.find_all_by_invoice_id(id)
+    invoice_transactions.any? {|invoice| invoice.result == "success"}
+  end
+
+  def check_invoice_total(id)
+    total_items = @invoice_items.find_all_by_invoice_id(id)
+    # total_prices = total_items.map {|item| item.price}
+    # total_prices.reduce(:+)
+    id
   end
 
 

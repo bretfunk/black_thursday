@@ -42,6 +42,6 @@ class InvoiceItemRepositoryTest < Minitest::Test
 
     assert_equal [], result
     refute_nil actual
-  end 
+  end
 
 end

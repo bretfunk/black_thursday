@@ -1,5 +1,6 @@
 require 'csv'
 require_relative '../lib/invoice'
+require 'pry'
 
 class InvoiceRepository
   attr_reader :input, :all, :se
@@ -48,6 +49,14 @@ class InvoiceRepository
 
   def pass_customer_to_se(customer_id)
     @se.find_customer_by_invoice(customer_id)
+  end
+
+  def pass_invoice_to_se_for_paid(id)
+    @se.is_invoice_paid?(id)
+  end
+
+  def pass_invoice_to_se_for_total(id)
+    @se.check_invoice_total(id)
   end
 
   # def inspect
