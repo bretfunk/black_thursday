@@ -69,10 +69,11 @@ class SalesEngineTest<Minitest::Test
   end
 
   def test_find_items_by_invoice
+
     invoice = se.invoices.find_by_id(2)
     invoices = invoice.items
 
-    assert_equal nil, invoices.length
+    assert_equal 4, invoices.length
   end
 
   def test_find_transactions_by_invoices
@@ -89,9 +90,7 @@ class SalesEngineTest<Minitest::Test
     assert_equal "Sylvester", customer.first_name
   end
 
-#does not work, check sales engine method line by line in minitest
   def test_find_invoice_by_transaction
-    skip
     transaction = se.transactions.find_by_id(40)
     result = transaction.invoice
     assert_equal 5, result
@@ -119,12 +118,9 @@ class SalesEngineTest<Minitest::Test
     assert_equal true, result
   end
 
-#does not work
   def test_invoice_total
     invoice = se.invoices.find_by_id(1)
     result = invoice.total
-    assert_equal 50, result
+    assert_equal 3489, result
   end
-
-
 end
