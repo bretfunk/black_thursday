@@ -72,7 +72,7 @@ attr_reader :se
 
   def merchant_invoices_by_count
     array = []
-    se.merchants.all.map {|merchant| array << merchant.invoices.count}
+    se.merchants.all.map { |merchant| array << merchant.invoices.count }
     array
   end
 
@@ -86,13 +86,15 @@ attr_reader :se
 
   def top_merchants_by_invoice_count
     se.merchants.all.find_all do |merchant|
-      merchant.invoices.count > average_invoices_per_merchant + (average_invoices_per_merchant_standard_deviation * 2)
+      aipmsd = average_invoices_per_merchant_standard_deviation * 2
+      merchant.invoices.count > average_invoices_per_merchant + aipmsd
     end
   end
 
   def bottom_merchants_by_invoice_count
     se.merchants.all.find_all do |merchant|
-      merchant.invoices.count < average_invoices_per_merchant - (average_invoices_per_merchant_standard_deviation * 2)
+      aipmsd = average_invoices_per_merchant_standard_deviation * 2
+      merchant.invoices.count < average_invoices_per_merchant - aipmsd
     end
   end
 
@@ -111,7 +113,7 @@ attr_reader :se
 
   def top_days_by_invoice_count
     num_to_beat = invoices_per_day_mean + invoices_per_day_standard_deviation
-    most_sales = invoices_per_day_hash.select { |key, value| value > num_to_beat }
+    most_sales = invoices_per_day_hash.select {|key, value| value > num_to_beat}
     ranked = most_sales.sort_by { |key, value| value }.reverse.flatten
     ranked.select { |item| item.class == String }
   end
@@ -125,7 +127,6 @@ attr_reader :se
     counts
   end
 
-  #this method is in invoice repo, redo
   def invoice_status(status)
     statuses = se.invoices.find_all_by_status(status)
     percent = statuses.count.to_f / se.invoices.all.count.to_f * 100
@@ -139,7 +140,7 @@ attr_reader :se
     #all_items.map { |item| item.unit_price }.reduce(0, :+)
   end
 
-#make a method in invoice repo to take an array
+#make a method in invoice repo to take an array, not using currently
   def return_invoice_items(invoice_array)
     array = []
     invoice_array.map { |invoice| array << se.invoice_items.find_all_by_invoice_id(invoice.id) }

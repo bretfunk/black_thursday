@@ -21,31 +21,27 @@ class Invoice
     @updated_at  = Time.parse(params[:updated_at])
   end
 
-
   def merchant
-    ir.pass_to_se(merchant_id)
+    ir.merchant_by_invoice(merchant_id)
   end
 
   def items
-    ir.pass_items_to_se(id)
+    ir.items_by_invoice(id)
   end
 
   def transactions
-    ir.pass_transactions_to_se(id)
+    ir.transactions_by_invoice(id)
   end
 
   def customer
-    ir.pass_customer_to_se(customer_id)
+    ir.customer_by_invoice(customer_id)
   end
 
-#put logic here and call it above
   def is_paid_in_full?
-    ir.pass_invoice_to_se_for_paid(id)
+    ir.is_invoice_paid(id)
   end
 
-#put logic here and call it above
   def total
-    ir.pass_invoice_to_se_for_total(id)
+    ir.invoice_total(id)
   end
-
 end

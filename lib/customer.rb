@@ -20,7 +20,6 @@ class Customer
   end
 
   def merchants
-    cr.merchants_by_customer(id)
+    cr.merchants_by_customer(customer_id)
   end
-
 end

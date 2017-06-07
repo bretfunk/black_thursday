@@ -5,10 +5,6 @@ require_relative 'invoice_repository'
 require_relative 'transaction_repository'
 require_relative 'invoice_item_repository'
 require_relative 'customer_repository'
-require 'csv' #this might not be needed
-require 'pry'
-require 'time'
-require 'bigdecimal'
 
 class SalesEngine
 
@@ -67,17 +63,15 @@ class SalesEngine
     invoices.find_by_id(invoice_id)
   end
 
-  #make this happen in repo and just call it
   def find_customers_by_merchant(merch_id)
     array = []
-     merch_invoices = invoices.find_all_by_merchant_id(merch_id)
+    merch_invoices = invoices.find_all_by_merchant_id(merch_id)
     merch_invoices.map do |invoice|
       array << customers.find_by_id(invoice.customer_id)
     end
     array.uniq
   end
 
-  #make this happen in repo and just call it
   def find_merchants_by_customer(customer_id)
     array = []
     customer_invoices = invoices.find_all_by_customer_id(customer_id)
@@ -87,13 +81,11 @@ class SalesEngine
     array
   end
 
-  #make this happen in repo or lower and just call it
   def is_invoice_paid?(id)
     invoice_transactions = transactions.find_all_by_invoice_id(id)
-    invoice_transactions.any? {|invoice| invoice.result == "success"}
+    invoice_transactions.any? { |invoice| invoice.result == "success" }
   end
 
-  #make this happen in repo or lower and just call it
   def check_invoice_total(id)
     total = 0.0
     return nil if !is_invoice_paid?(id)
@@ -103,5 +95,4 @@ class SalesEngine
     end
     total.round(2)
   end
-
 end

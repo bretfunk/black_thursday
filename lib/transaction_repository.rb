@@ -41,7 +41,7 @@ class TransactionRepository
     all.find_all { |transaction| transaction.result == tran_result}
   end
 
-  def pass_invoice_id_to_se(invoice_id)
+  def transaction_by_invoice(invoice_id)
     se.find_invoice_by_transaction(invoice_id)
   end
 

@@ -1,5 +1,5 @@
-require 'csv'
 require_relative '../lib/invoice'
+require 'csv'
 require 'pry'
 
 class InvoiceRepository
@@ -12,7 +12,6 @@ class InvoiceRepository
     @all    = []
     invoice_collection(input)
   end
-
 
   def invoice_collection(input)
     input.map do |row|
@@ -41,32 +40,31 @@ class InvoiceRepository
     all.find_all { |invoice| invoice.status == status.to_sym }
   end
 
-  def pass_to_se(id)
-    se.find_merchant_by_invoice_id(id)
+  def merchant_by_invoice(merchant_id)
+    se.find_merchant_by_invoice_id(merchant_id)
   end
 
-  def pass_items_to_se(id)
+  def items_by_invoice(id)
     se.find_items_by_invoice(id)
   end
 
-  def pass_transactions_to_se(id)
-    se.find_transactions_by_invoice(id)
+  def transactions_by_invoice(invoice_id)
+    se.find_transactions_by_invoice(invoice_id)
   end
 
-  def pass_customer_to_se(customer_id)
+  def customer_by_invoice(customer_id)
     se.find_customer_by_invoice(customer_id)
   end
 
-  def pass_invoice_to_se_for_paid(id)
+  def is_invoice_paid(id)
     se.is_invoice_paid?(id)
   end
 
-  def pass_invoice_to_se_for_total(id)
+  def invoice_total(id)
     se.check_invoice_total(id)
   end
 
   def inspect
   "#<#{self.class} #{@all.size} rows>"
   end
-
 end

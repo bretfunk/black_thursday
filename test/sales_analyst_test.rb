@@ -73,7 +73,7 @@ class SalesAnalystTest < Minitest::Test
     skip #for time
     result = sa.golden_items
 
-    assert_equal 114, result.count
+    assert_equal 5, result.count
   end
 
   def test_average_invoices_per_merchant

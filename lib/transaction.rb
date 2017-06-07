@@ -24,6 +24,6 @@ class Transaction
   end
 
   def invoice
-    tr.pass_invoice_id_to_se(invoice_id)
+    tr.transaction_by_invoice(invoice_id)
   end
 end
