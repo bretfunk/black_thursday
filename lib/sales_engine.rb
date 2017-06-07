@@ -11,16 +11,23 @@ require 'time'
 require 'bigdecimal'
 
 class SalesEngine
-  attr_accessor :items, :merchants, :sales_analyst, :invoices, :invoice_items, :transactions, :customers
+
+  attr_accessor :items,
+                :merchants,
+                :sales_analyst,
+                :invoices,
+                :invoice_items,
+                :transactions,
+                :customers
 
   def initialize(files)
-    @items = ItemRepository.new(files[:items], self)
-    @merchants = MerchantRepository.new(files[:merchants], self)
-    @sales_analyst = SalesAnalyst.new(self)
-    @invoices = InvoiceRepository.new(files[:invoices], self)
-    @invoice_items = InvoiceItemRepository.new(files[:invoice_items], self)
-    @transactions = TransactionRepository.new(files[:transactions], self)
-    @customers = CustomerRepository.new(files[:customers], self)
+    @items          = ItemRepository.new(files[:items], self)
+    @merchants      = MerchantRepository.new(files[:merchants], self)
+    @sales_analyst  = SalesAnalyst.new(self)
+    @invoices       = InvoiceRepository.new(files[:invoices], self)
+    @invoice_items  = InvoiceItemRepository.new(files[:invoice_items], self)
+    @transactions   = TransactionRepository.new(files[:transactions], self)
+    @customers      = CustomerRepository.new(files[:customers], self)
   end
 
   def self.from_csv(files)

@@ -43,7 +43,7 @@ class ItemRepository
   end
 
   def find_all_by_price_in_range(range)
-    @all.find_all { |item| item.unit_price.to_f >= range.begin.to_f && item.unit_price.to_f <= range.end.to_f }
+    @all.find_all {|item| item.unit_price.to_f >= range.begin.to_f && item.unit_price.to_f <= range.end.to_f}
   end
 
   def find_all_by_merchant_id(merch_id)
