@@ -74,16 +74,16 @@ class ItemRepoTest < Minitest::Test
     refute_nil result
   end
 
-  def test_find_all_by_price_in_range_returns_empty_array_for_invalid_match
-    skip
-    result = new_instance.find_all_by_price_in_range(1..3)
-
-    assert_equal [], result
-  end
+  ## may not need according to spec harness 
+  # def test_find_all_by_price_in_range_returns_empty_array_for_invalid_match
+  #   result = new_instance.find_all_by_price_in_range(0..1)
+  #
+  #   assert result.empty?
+  #   assert_equal Array, result.class
+  # end
 
   ##need to find out how to do
   def test_find_all_by_price_in_range_returns_valid_matches
-    skip
     result = new_instance.find_all_by_price_in_range(3000..4000)
 
     refute_nil result

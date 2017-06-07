@@ -14,7 +14,11 @@ class CustomerRepository
 
   def customer_collection(input)
     input.map do |row|
-      @all << Customer.new({:id => row[0], :first_name => row[1], :last_name => row[2], :created_at => row[3], :updated_at => row[4] }, self)
+      @all << Customer.new({:id => row[0],
+                            :first_name => row[1],
+                            :last_name => row[2],
+                            :created_at => row[3],
+                            :updated_at => row[4] }, self)
     end
   end
 
@@ -23,11 +27,11 @@ class CustomerRepository
   end
 
   def find_all_by_first_name(fname)
-    @all.find_all { |customer| customer.first_name.upcase.include?(fname.upcase) }
+    @all.find_all {|customer| customer.first_name.upcase.include?(fname.upcase)}
   end
 
   def find_all_by_last_name(lname)
-    @all.find_all { |customer| customer.last_name.upcase.include?(lname.upcase) }
+    @all.find_all {|customer| customer.last_name.upcase.include?(lname.upcase)}
   end
 
 

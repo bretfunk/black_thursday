@@ -7,9 +7,9 @@ class MerchantRepository
   attr_reader :input, :all, :se
 
   def initialize(csv, se)
-    @se = se
+    @se    = se
     @input = CSV.open csv, headers: true, header_converters: :symbol
-    @all = []
+    @all   = []
     merch_collection(input)
   end
 
@@ -34,7 +34,7 @@ class MerchantRepository
   end
 
   def pass_to_se(merch_id)
-		@se.find_items_by_merchant_id(merch_id)
+	   @se.find_items_by_merchant_id(merch_id)
 	end
 
   def invoices_pass_to_se(merch_id)

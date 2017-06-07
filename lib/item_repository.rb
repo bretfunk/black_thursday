@@ -7,15 +7,21 @@ class ItemRepository
   attr_reader :input, :all, :se
 
   def initialize(csv, se)
-    @se = se
-    @input = CSV.open csv, headers: true, header_converters: :symbol
-    @all = []
+    @se     = se
+    @input  = CSV.open csv, headers: true, header_converters: :symbol
+    @all    = []
     item_collection(input)
   end
 
   def item_collection(input)
     input.map do |row|
-    @all << Item.new({:id => row[0], :name => row[1], :description => row[2], :unit_price => row[3], :merchant_id => row[4], :created_at => row[5], :updated_at => row[6]}, self)
+    @all << Item.new({:id => row[0],
+                      :name => row[1],
+                      :description => row[2],
+                      :unit_price => row[3],
+                      :merchant_id => row[4],
+                      :created_at => row[5],
+                      :updated_at => row[6]}, self)
     end
   end
 
@@ -37,7 +43,7 @@ class ItemRepository
   end
 
   def find_all_by_price_in_range(range)
-    @all.find_all { |item| item.unit_price.to_f >= range.begin.to_f && item.unit_price.to_f <= range.end.to_f }
+    @all.find_all {|item| item.unit_price.to_f >= range.begin.to_f && item.unit_price.to_f <= range.end.to_f}
   end
 
   def find_all_by_merchant_id(merch_id)

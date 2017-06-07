@@ -28,12 +28,17 @@ attr_reader :se
 
   def ipm_standard_deviation
     total = 0
-    merchant_items_by_count.map {|num| total += ((num.to_f - average_items_per_merchant.to_f) ** 2)}
+    merchant_items_by_count.map do |num|
+      total += ((num.to_f - average_items_per_merchant.to_f) ** 2)
+    end
     Math.sqrt(total / (se.merchants.all.count.to_f - 1.00)).round(2)
   end
+    # merchant_items_by_count.map {|num| total += ((num.to_f - average_items_per_merchant.to_f) ** 2)}
+    # Math.sqrt(total / (se.merchants.all.count.to_f - 1.00)).round(2)
+
 
   def merchants_with_high_item_count
-    se.merchants.all.find_all { |merchant| merchant.items.count > (ipm_standard_deviation + average_items_per_merchant) }
+    se.merchants.all.find_all {|merchant| merchant.items.count > (ipm_standard_deviation + average_items_per_merchant)}
   end
 
   def average_item_price_for_merchant(merch_id)

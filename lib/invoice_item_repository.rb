@@ -16,7 +16,13 @@ class InvoiceItemRepository
 
   def invoice_item_collection(input)
     input.map do |row|
-      @all << InvoiceItem.new({:id => row[0], :item_id => row[1], :invoice_id => row[2], :quantity => row[3], :unit_price => row[4], :created_at => row[5], :updated_at => row[6]}, self)
+      @all << InvoiceItem.new({:id => row[0],
+                              :item_id => row[1],
+                              :invoice_id => row[2],
+                              :quantity => row[3],
+                              :unit_price => row[4],
+                              :created_at => row[5],
+                              :updated_at => row[6]}, self)
     end
   end
 
