@@ -5,7 +5,14 @@ require_relative '../lib/sales_engine'
 class SalesAnalystTest < Minitest::Test
   attr_reader :se, :sa
   def setup
-    @se = SalesEngine.from_csv({items: './data/items.csv', merchants: './data/merchants.csv', invoices: './data/invoices.csv', invoice_items: './data/invoice_items.csv', customers: './data/customers.csv', transactions: './data/transactions.csv'})
+    @se = SalesEngine.from_csv({
+      items:          './data/items.csv',
+      merchants:      './data/merchants.csv',
+      invoices:       './data/invoices.csv',
+      invoice_items:  './data/invoice_items.csv',
+      customers:      './data/customers.csv',
+      transactions:   './data/transactions.csv'
+      })
     @sa = SalesAnalyst.new(@se)
   end
 
@@ -19,14 +26,12 @@ class SalesAnalystTest < Minitest::Test
     assert_equal 2.88, actual
   end
 
-#maybe take out in case different data files
   def test_items_total
     result = se.items.all.count
 
     assert_equal 1367, result
   end
 
-#maybe take out in case different data files
   def test_merchant_total
     result = se.merchants.all.count
 
@@ -99,39 +104,52 @@ class SalesAnalystTest < Minitest::Test
 
   def test_invoices_per_day_hash
     result = sa.invoices_per_day_hash
-    hash = {"Saturday"=>729, "Friday"=>701, "Wednesday"=>741, "Monday"=>696, "Sunday"=>708, "Tuesday"=>692, "Thursday"=>718}
+    hash = {
+      "Saturday"  =>  729,
+      "Friday"    =>  701,
+      "Wednesday" =>  741,
+      "Monday"    =>  696,
+      "Sunday"    =>  708,
+      "Tuesday"   =>  692,
+      "Thursday"  =>  718
+    }
     assert_equal hash, result
   end
 
   def test_invoices_per_day_mean
     result = sa.invoices_per_day_mean
+
     assert_equal 712, result
   end
 
   def test_invoices_per_day_standard_deviation
     result = sa.invoices_per_day_standard_deviation
+
     assert_equal 18.07, result
   end
 
   def test_top_days_by_invoice_count
-    #this is different than the spec, ask someone!
     result = sa.top_days_by_invoice_count
     top_days = ["Wednesday"]
+
     assert_equal top_days, result
   end
 
   def test_invoice_status_pending
     result = sa.invoice_status(:pending)
+
     assert_equal 29.55, result
   end
 
   def test_invoice_status_shipped
     result = sa.invoice_status(:shipped)
+
     assert_equal 56.95, result
   end
 
   def test_invoice_status_returned
     result = sa.invoice_status(:returned)
+
     assert_equal 13.5, result
   end
 end

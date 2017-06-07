@@ -25,7 +25,7 @@ class InvoiceItem
   end
 
   def unit_price_to_dollars
-    @unit_price.to_f.round(2)
+    unit_price.to_f.round(2)
   end
 
   def to_big_decimal(price)

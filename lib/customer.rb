@@ -20,7 +20,7 @@ class Customer
   end
 
   def merchants
-    cr.merchants_pass_to_se(id)
+    cr.merchants_by_customer(id)
   end
 
 end

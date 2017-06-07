@@ -16,7 +16,7 @@ class InvoiceItemRepository
 
   def invoice_item_collection(input)
     input.map do |row|
-      @all << InvoiceItem.new({:id => row[0],
+      all << InvoiceItem.new({:id => row[0],
                               :item_id => row[1],
                               :invoice_id => row[2],
                               :quantity => row[3],
@@ -27,15 +27,15 @@ class InvoiceItemRepository
   end
 
   def find_by_id(id)
-    @all.find { |invoice_item| invoice_item.id.to_i == id.to_i}
+    all.find { |invoice_item| invoice_item.id.to_i == id.to_i }
   end
 
   def find_all_by_item_id(item_id)
-    @all.find_all { |invoice_item| invoice_item.item_id.to_i == item_id.to_i}
+    all.find_all { |invoice_item| invoice_item.item_id.to_i == item_id.to_i }
   end
 
   def find_all_by_invoice_id(inv_id)
-    @all.find_all { |invoice_item| invoice_item.invoice_id.to_i == inv_id.to_i }
+    all.find_all { |invoice_item| invoice_item.invoice_id.to_i == inv_id.to_i }
   end
 
   def inspect
