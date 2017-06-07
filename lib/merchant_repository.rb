@@ -7,9 +7,9 @@ class MerchantRepository
   attr_reader :input, :all, :se
 
   def initialize(csv, se)
-    @se = se
+    @se    = se
     @input = CSV.open csv, headers: true, header_converters: :symbol
-    @all = []
+    @all   = []
     merch_collection(input)
   end
 

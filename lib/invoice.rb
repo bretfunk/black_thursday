@@ -14,13 +14,13 @@ class Invoice
               :updated_at
 
   def initialize(params, ir)
-    @ir = ir
-    @id = params[:id].to_i
+    @ir          = ir
+    @id          = params[:id].to_i
     @customer_id = params[:customer_id].to_i
     @merchant_id = params[:merchant_id].to_i
-    @status = params[:status].to_sym
-    @created_at = Time.parse(params[:created_at])
-    @updated_at = Time.parse(params[:updated_at])
+    @status      = params[:status].to_sym
+    @created_at  = Time.parse(params[:created_at])
+    @updated_at  = Time.parse(params[:updated_at])
   end
 
 

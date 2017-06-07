@@ -7,9 +7,9 @@ class ItemRepository
   attr_reader :input, :all, :se
 
   def initialize(csv, se)
-    @se = se
-    @input = CSV.open csv, headers: true, header_converters: :symbol
-    @all = []
+    @se     = se
+    @input  = CSV.open csv, headers: true, header_converters: :symbol
+    @all    = []
     item_collection(input)
   end
 
