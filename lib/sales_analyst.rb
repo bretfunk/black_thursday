@@ -143,7 +143,9 @@ attr_reader :se
 #make a method in invoice repo to take an array, not using currently
   def return_invoice_items(invoice_array)
     array = []
-    invoice_array.map { |invoice| array << se.invoice_items.find_all_by_invoice_id(invoice.id) }
+    invoice_array.map do |invoice|
+      array << se.invoice_items.find_all_by_invoice_id(invoice.id)
+    end
     array
   end
 

@@ -34,7 +34,7 @@ class MerchantRepository
   end
 
   def items_by_merchant(merch_id)
-	  se.find_items_by_merchant_id(merch_id)
+    se.find_items_by_merchant_id(merch_id)
   end
 
   def invoices_by_merchant(merch_id)

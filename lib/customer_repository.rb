@@ -29,11 +29,11 @@ class CustomerRepository
   end
 
   def find_all_by_first_name(fname)
-    all.find_all { |customer| customer.first_name.upcase.include?(fname.upcase) }
+    all.find_all { |customer| customer.first_name.upcase.include?(fname.upcase)}
   end
 
   def find_all_by_last_name(lname)
-    all.find_all { |customer| customer.last_name.upcase.include?(lname.upcase) }
+    all.find_all { |customer| customer.last_name.upcase.include?(lname.upcase)}
   end
 
   def merchants_by_customer(customer_id)
