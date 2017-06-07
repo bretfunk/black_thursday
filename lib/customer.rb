@@ -3,7 +3,12 @@ require 'time'
 
 class Customer
 
-  attr_reader :cr, :id, :first_name, :last_name, :created_at, :updated_at
+  attr_reader :cr,
+              :id,
+              :first_name,
+              :last_name,
+              :created_at,
+              :updated_at
 
   def initialize(params, cr)
     @cr         = cr

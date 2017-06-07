@@ -5,7 +5,13 @@ require 'time'
 
 class Invoice
 
-  attr_reader :ir, :id, :customer_id, :merchant_id, :status, :created_at, :updated_at
+  attr_reader :ir,
+              :id,
+              :customer_id,
+              :merchant_id,
+              :status,
+              :created_at,
+              :updated_at
 
   def initialize(params, ir)
     @ir = ir
