@@ -126,6 +126,6 @@ class SalesEngineTest<Minitest::Test
   def test_invoice_total
     invoice = se.invoices.find_by_id(1)
     result = invoice.total
-    assert_equal 3489, result
+    assert_equal 21067.77, result
   end
 end

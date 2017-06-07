@@ -95,9 +95,13 @@ class SalesEngine
 
   #make this happen in repo or lower and just call it
   def check_invoice_total(id)
-    total_items = invoice_items.find_all_by_invoice_id(id) if is_invoice_paid?(id)
-    total_prices = total_items.map {|item| item.unit_price}
-    total_prices.reduce(:+).to_i
+    total = 0.0
+    return nil if !is_invoice_paid?(id)
+    total_invoices = invoice_items.find_all_by_invoice_id(id)
+    total_invoices.map do |invoice|
+      total += (invoice.quantity.to_i * invoice.unit_price)
+    end
+    total.round(2)
   end
 
 end
