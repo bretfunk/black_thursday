@@ -3,10 +3,10 @@ require_relative '../lib/item'
 
 class ItemTest < Minitest::Test
 
-  attr_reader :new_instance
+  attr_reader :i
 
   def setup
-    @new_instance = Item.new({
+    @i = Item.new({
       id:         999999,
       name:        "Pencil",
       description: "You can use it to write things",
@@ -18,49 +18,49 @@ class ItemTest < Minitest::Test
   end
 
   def test_item_class_exists
-    assert_instance_of Item, new_instance
+    assert_instance_of Item, i
   end
 
   def test_it_returns_id
-    result = new_instance.id
+    result = i.id
 
     assert_equal 999999, result
   end
 
   def test_it_returns_name
-    result = new_instance.name
+    result = i.name
 
     assert_equal "Pencil", result
   end
 
   def test_it_returns_description
-    result = new_instance.description
+    result = i.description
 
     assert_equal "You can use it to write things", result
   end
 
   def test_it_returns_unit_price
-    result = new_instance.unit_price
+    result = i.unit_price
 
     assert_equal 0.3e1, result
   end
 
   def test_it_can_return_created_at_value
     time = Time.now
-    result = new_instance.created_at
+    result = i.created_at
 
     refute_equal result, time
   end
 
   def test_it_can_return_updated_at_value
     time = Time.now
-    result = new_instance.updated_at
+    result = i.updated_at
 
     refute_equal result, time
   end
 
   def test_it_converts_unit_price_to_float
-    result = new_instance.unit_price_to_dollars
+    result = i.unit_price_to_dollars
 
     assert_equal 3, result
   end

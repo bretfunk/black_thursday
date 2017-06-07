@@ -34,65 +34,68 @@ class SalesEngine
     SalesEngine.new(files)
   end
 
-  ### working on ability to connect merchantID in ITEM  and Id in MERCHANT
   def find_merchant_by_item_id(id)
-    @merchants.find_by_id(id)
+    merchants.find_by_id(id)
   end
 
   def find_items_by_merchant_id(id)
-    @items.find_all_by_merchant_id(id)
+    items.find_all_by_merchant_id(id)
   end
 
   def find_merchant_by_invoice_id(id)
-    @merchants.find_by_id(id)
+    merchants.find_by_id(id)
   end
 
   def find_invoices_by_merchant_id(id)
-    @invoices.find_all_by_merchant_id(id)
+    invoices.find_all_by_merchant_id(id)
   end
 
   def find_items_by_invoice(id)
-    invoice_items = @invoice_items.find_all_by_invoice_id(id)
-    @items.find_items_by_invoice_id(invoice_items)
+    all_invoice_items = invoice_items.find_all_by_invoice_id(id)
+    items.find_items_by_invoice_id(all_invoice_items)
   end
 
   def find_transactions_by_invoice(id)
-    @transactions.find_all_by_invoice_id(id)
+    transactions.find_all_by_invoice_id(id)
   end
 
   def find_customer_by_invoice(customer_id)
-    @customers.find_by_id(customer_id)
+    customers.find_by_id(customer_id)
   end
 
   def find_invoice_by_transaction(invoice_id)
-    @invoices.find_by_id(invoice_id)
+    invoices.find_by_id(invoice_id)
   end
 
+  #make this happen in repo and just call it
   def find_customers_by_merchant(merch_id)
     array = []
-     merch_invoices = @invoices.find_all_by_merchant_id(merch_id)
+     merch_invoices = invoices.find_all_by_merchant_id(merch_id)
     merch_invoices.map do |invoice|
-      array << @customers.find_by_id(invoice.customer_id)
+      array << customers.find_by_id(invoice.customer_id)
     end
     array.uniq
   end
 
+  #make this happen in repo and just call it
   def find_merchants_by_customer(customer_id)
     array = []
-    customer_invoices = @invoices.find_all_by_customer_id(customer_id)
+    customer_invoices = invoices.find_all_by_customer_id(customer_id)
     customer_invoices.map do |invoice|
-      array << @merchants.find_by_id(invoice.merchant_id)
+      array << merchants.find_by_id(invoice.merchant_id)
     end
     array
   end
 
+  #make this happen in repo or lower and just call it
   def is_invoice_paid?(id)
-    invoice_transactions = @transactions.find_all_by_invoice_id(id)
+    invoice_transactions = transactions.find_all_by_invoice_id(id)
     invoice_transactions.any? {|invoice| invoice.result == "success"}
   end
 
+  #make this happen in repo or lower and just call it
   def check_invoice_total(id)
-    total_items = @invoice_items.find_all_by_invoice_id(id) if is_invoice_paid?(id)
+    total_items = invoice_items.find_all_by_invoice_id(id) if is_invoice_paid?(id)
     total_prices = total_items.map {|item| item.unit_price}
     total_prices.reduce(:+).to_i
   end

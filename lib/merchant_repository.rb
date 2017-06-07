@@ -20,29 +20,29 @@ class MerchantRepository
   end
 
   def find_by_id(merchant_id)
-    @all.find do |merchant|
+    all.find do |merchant|
       merchant.id.to_i == merchant_id.to_i
     end
   end
 
   def find_by_name(name)
-    @all.find { |merchant| merchant.name.upcase == name.to_s.upcase }
+    all.find { |merchant| merchant.name.upcase == name.to_s.upcase }
   end
 
   def find_all_by_name(name)
-    @all.find_all { |merchant| merchant.name.upcase.include?(name.upcase) }
+    all.find_all { |merchant| merchant.name.upcase.include?(name.upcase) }
   end
 
-  def pass_to_se(merch_id)
-	   @se.find_items_by_merchant_id(merch_id)
-	end
-
-  def invoices_pass_to_se(merch_id)
-    @se.find_invoices_by_merchant_id(merch_id)
+  def items_by_merchant(merch_id)
+	  se.find_items_by_merchant_id(merch_id)
   end
 
-  def customers_pass_to_se(merch_id)
-    @se.find_customers_by_merchant(merch_id)
+  def invoices_by_merchant(merch_id)
+    se.find_invoices_by_merchant_id(merch_id)
+  end
+
+  def customers_by_merchant(merch_id)
+    se.find_customers_by_merchant(merch_id)
   end
 
   def inspect

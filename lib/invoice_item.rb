@@ -1,7 +1,7 @@
 require 'pry'
 require 'time'
 require 'bigdecimal'
-require 'bigdecimal/util'
+#require 'bigdecimal/util' do we need this?
 
 class InvoiceItem
 
@@ -31,7 +31,4 @@ class InvoiceItem
   def to_big_decimal(price)
     BigDecimal.new(price, price.to_s.length)
   end
-
-
-
 end

@@ -42,27 +42,27 @@ class InvoiceRepository
   end
 
   def pass_to_se(id)
-    @se.find_merchant_by_invoice_id(id)
+    se.find_merchant_by_invoice_id(id)
   end
 
   def pass_items_to_se(id)
-    @se.find_items_by_invoice(id)
+    se.find_items_by_invoice(id)
   end
 
   def pass_transactions_to_se(id)
-    @se.find_transactions_by_invoice(id)
+    se.find_transactions_by_invoice(id)
   end
 
   def pass_customer_to_se(customer_id)
-    @se.find_customer_by_invoice(customer_id)
+    se.find_customer_by_invoice(customer_id)
   end
 
   def pass_invoice_to_se_for_paid(id)
-    @se.is_invoice_paid?(id)
+    se.is_invoice_paid?(id)
   end
 
   def pass_invoice_to_se_for_total(id)
-    @se.check_invoice_total(id)
+    se.check_invoice_total(id)
   end
 
   def inspect

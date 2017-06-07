@@ -19,14 +19,14 @@ class Item
     @id          = params[:id].to_i
     @name        = params[:name]
     @description = params[:description]
-    @unit_price  = (to_big_decimal(params[:unit_price].to_f) / 100) unless params[:unit_price] == nil
+    @unit_price  = (to_big_decimal(params[:unit_price].to_f) / 100)
     @created_at  = Time.parse(params[:created_at].to_s)
     @updated_at  = Time.parse(params[:updated_at].to_s)
     @merchant_id = params[:merchant_id].to_i
   end
 
   def unit_price_to_dollars
-    @unit_price.to_f.round(2)
+    unit_price.to_f.round(2)
   end
 
   def to_big_decimal(price)
@@ -34,6 +34,6 @@ class Item
   end
 
   def merchant
-    ir.pass_to_se(merchant_id)
+    ir.merchant_by_item(merchant_id)
   end
 end

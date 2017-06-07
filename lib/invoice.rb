@@ -1,5 +1,3 @@
-# require 'bigdecimal'
-# require 'bigdecimal/util'
 require 'pry'
 require 'time'
 
@@ -40,10 +38,12 @@ class Invoice
     ir.pass_customer_to_se(customer_id)
   end
 
+#put logic here and call it above
   def is_paid_in_full?
     ir.pass_invoice_to_se_for_paid(id)
   end
 
+#put logic here and call it above
   def total
     ir.pass_invoice_to_se_for_total(id)
   end

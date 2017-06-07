@@ -26,23 +26,23 @@ class TransactionRepository
   end
 
   def find_by_id(transaction_id)
-     @all.find { |transaction| transaction.id.to_i == transaction_id.to_i }
+     all.find { |transaction| transaction.id.to_i == transaction_id.to_i }
   end
 
   def find_all_by_invoice_id(inv_id)
-    @all.find_all { |transaction| transaction.invoice_id == inv_id }
+    all.find_all { |transaction| transaction.invoice_id == inv_id }
   end
 
   def find_all_by_credit_card_number(card_num)
-    @all.find_all { |transaction| transaction.credit_card_number == card_num}
+    all.find_all { |transaction| transaction.credit_card_number == card_num}
   end
 
   def find_all_by_result(tran_result)
-    @all.find_all { |transaction| transaction.result == tran_result}
+    all.find_all { |transaction| transaction.result == tran_result}
   end
 
   def pass_invoice_id_to_se(invoice_id)
-    @se.find_invoice_by_transaction(invoice_id)
+    se.find_invoice_by_transaction(invoice_id)
   end
 
   def inspect

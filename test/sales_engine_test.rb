@@ -96,7 +96,6 @@ class SalesEngineTest<Minitest::Test
     assert_equal 5, result
   end
 
-#dont know if it is correct!!
   def test_find_invoice_by_transaction
     merchant = se.merchants.find_by_id(12335938)
     customers = merchant.invoices
@@ -104,7 +103,6 @@ class SalesEngineTest<Minitest::Test
     assert_equal 16, customers.length
   end
 
-#don't know if this is correct!!
   def test_find_merchants_by_customer
     customer = se.customers.find_by_id(30)
     merchants = customer.merchants

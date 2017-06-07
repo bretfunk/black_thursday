@@ -1,7 +1,6 @@
 require 'pry'
 require 'time'
 
-
 class Transaction
 
   attr_reader :tr,
@@ -27,5 +26,4 @@ class Transaction
   def invoice
     tr.pass_invoice_id_to_se(invoice_id)
   end
-
 end

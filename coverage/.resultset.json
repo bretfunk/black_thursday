@@ -1,9 +1,7 @@
 {
   "Unit Tests": {
     "coverage": {
-      "/Users/bret/Desktop/1module/projects/black_thursday/lib/invoice_item.rb": [
-        1,
-        1,
+      "/Users/bret/Desktop/1module/projects/black_thursday/lib/transaction.rb": [
         1,
         1,
         null,
@@ -17,30 +15,24 @@
         null,
         null,
         null,
-        1,
-        9,
-        9,
-        9,
-        9,
-        9,
-        9,
-        9,
-        9,
-        null,
         null,
         1,
-        1,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
         null,
         null,
         1,
-        9,
-        null,
-        null,
-        null,
+        0,
         null,
         null
       ]
     },
-    "timestamp": 1496802013
+    "timestamp": 1496804684
   }
 }
