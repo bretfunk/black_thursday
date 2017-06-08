@@ -51,5 +51,4 @@ class CustomerTest < Minitest::Test
     refute_equal result, time
   end
 
-
 end

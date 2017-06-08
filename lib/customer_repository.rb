@@ -3,6 +3,7 @@ require 'csv'
 require 'pry'
 
 class CustomerRepository
+
   attr_reader :input, :all, :se
 
   def initialize(csv, se)

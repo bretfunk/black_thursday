@@ -1,6 +1,7 @@
 require 'pry'
 
 class Merchant
+
   attr_reader :id, :name, :mr
 
   def initialize(attributes, mr)

@@ -2,7 +2,8 @@ require 'pry'
 require 'bigdecimal'
 
 class SalesAnalyst
-attr_reader :se
+
+  attr_reader :se
 
   def initialize(se)
     @se = se

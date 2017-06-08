@@ -1,6 +1,5 @@
 require_relative 'test_helper'
 require_relative '../lib/merchant_repository'
-#require_relative 'sales_engine'
 
 class MerchantRepoTest < Minitest::Test
 

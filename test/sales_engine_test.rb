@@ -3,6 +3,7 @@ require_relative '../lib/sales_engine'
 
 
 class SalesEngineTest<Minitest::Test
+
   attr_reader :se
 
   def setup
@@ -104,8 +105,7 @@ class SalesEngineTest<Minitest::Test
   end
 
   def test_find_merchants_by_customer
-    # customer = se.customers.find_by_id(30)
-    customer = se.find_merchants_by_customer(30)
+    customer = se.customers.find_by_id(30)
     merchants = customer.merchants
 
     assert_equal 5, merchants.length

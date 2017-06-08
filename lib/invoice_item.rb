@@ -1,7 +1,6 @@
 require 'pry'
 require 'time'
 require 'bigdecimal'
-#require 'bigdecimal/util' do we need this?
 
 class InvoiceItem
 

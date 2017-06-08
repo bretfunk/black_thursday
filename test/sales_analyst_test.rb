@@ -51,7 +51,6 @@ class SalesAnalystTest < Minitest::Test
   end
 
   def test_merchants_with_high_item_count
-    skip #for time
     result = sa.merchants_with_high_item_count
 
     assert_equal 52, result.count
@@ -70,7 +69,6 @@ class SalesAnalystTest < Minitest::Test
   end
 
   def test_golden_items
-    skip #for time
     result = sa.golden_items
 
     assert_equal 5, result.count
@@ -89,14 +87,12 @@ class SalesAnalystTest < Minitest::Test
   end
 
   def test_top_merchants_by_invoice_count
-    skip #for time
     result = sa.top_merchants_by_invoice_count
 
     assert_equal 12, result.count
   end
 
   def test_bottom_merchants_by_invoice_count
-    skip #for time
     result = sa.bottom_merchants_by_invoice_count
 
     assert_equal 4, result.count

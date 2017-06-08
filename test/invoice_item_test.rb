@@ -73,5 +73,4 @@ class InvoiceItemTest < Minitest::Test
     assert_equal 5, result
   end
 
-
 end
