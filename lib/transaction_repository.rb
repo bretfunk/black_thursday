@@ -1,6 +1,5 @@
 require_relative 'transaction'
 require 'csv'
-require 'pry'
 
 class TransactionRepository
 
@@ -48,5 +47,4 @@ class TransactionRepository
   def inspect
     "#<#{self.class} #{@all.size} rows>"
   end
-
 end

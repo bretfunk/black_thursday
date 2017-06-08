@@ -1,4 +1,3 @@
-require 'pry'
 require 'bigdecimal'
 
 class SalesAnalyst
@@ -14,12 +13,12 @@ class SalesAnalyst
   end
 
   def average_items_per_merchant
-    (se.items.all.count.to_f / se.merchants.all.count.to_f).round(2)
+    (se.all_items.count.to_f / se.all_merchants.count.to_f).round(2)
   end
 
   def merchant_items_by_count
     array = []
-    se.merchants.all.map { |merchant| array << merchant.items.count }
+    se.all_merchants.map { |merchant| array << merchant.items.count }
     array
   end
 
@@ -32,11 +31,11 @@ class SalesAnalyst
     merchant_items_by_count.map do |num|
       total += ((num.to_f - average_items_per_merchant.to_f)**2)
     end
-    Math.sqrt(total / (se.merchants.all.count.to_f - 1.00)).round(2)
+    Math.sqrt(total / (se.all_merchants.count.to_f - 1.00)).round(2)
   end
 
   def merchants_with_high_item_count
-    se.merchants.all.find_all do |merchant|
+    se.all_merchants.find_all do |merchant|
       num_to_beat = ipm_standard_deviation + average_items_per_merchant
       merchant.items.count > num_to_beat
     end
@@ -44,7 +43,7 @@ class SalesAnalyst
 
   def average_item_price_for_merchant(merch_id)
     array = []
-    current_merch = se.merchants.all.find { |merchant| merchant.id == merch_id }
+    current_merch = se.all_merchants.find { |merchant| merchant.id == merch_id }
     current_merch.items.map do |item|
       array << item.unit_price.to_f
     end
@@ -53,14 +52,14 @@ class SalesAnalyst
 
   def average_average_price_per_merchant
     array = []
-    se.merchants.all.map do |merchant|
+    se.all_merchants.map do |merchant|
       array << average_item_price_for_merchant(merchant.id)
     end
-    (array.reduce(:+) / se.merchants.all.count).round(2)
+    (array.reduce(:+) / se.all_merchants.count).round(2)
   end
 
   def golden_items
-    se.items.all.find_all do |item|
+    se.all_items.find_all do |item|
       strd_dev_multiple = (ipm_standard_deviation * 2).to_i * 1000
       num_to_beat = average_average_price_per_merchant + strd_dev_multiple
       item.unit_price >= num_to_beat
@@ -68,12 +67,12 @@ class SalesAnalyst
   end
 
   def average_invoices_per_merchant
-      (se.invoices.all.count.to_f / se.merchants.all.count.to_f).round(2)
+      (se.invoices.all.count.to_f / se.all_merchants.count.to_f).round(2)
   end
 
   def merchant_invoices_by_count
     array = []
-    se.merchants.all.map { |merchant| array << merchant.invoices.count }
+    se.all_merchants.map { |merchant| array << merchant.invoices.count }
     array
   end
 
@@ -82,18 +81,18 @@ class SalesAnalyst
     merchant_invoices_by_count.map do |num|
       total += ((num.to_f - average_invoices_per_merchant.to_f)**2)
     end
-    Math.sqrt(total / (se.merchants.all.count.to_f - 1.00)).round(2)
+    Math.sqrt(total / (se.all_merchants.count.to_f - 1.00)).round(2)
   end
 
   def top_merchants_by_invoice_count
-    se.merchants.all.find_all do |merchant|
+    se.all_merchants.find_all do |merchant|
       aipmsd = average_invoices_per_merchant_standard_deviation * 2
       merchant.invoices.count > average_invoices_per_merchant + aipmsd
     end
   end
 
   def bottom_merchants_by_invoice_count
-    se.merchants.all.find_all do |merchant|
+    se.all_merchants.find_all do |merchant|
       aipmsd = average_invoices_per_merchant_standard_deviation * 2
       merchant.invoices.count < average_invoices_per_merchant - aipmsd
     end
@@ -134,41 +133,20 @@ class SalesAnalyst
     percent.round(2)
   end
 
-#does not work
-  def total_revenue_by_date(invoice_date)
-    se.invoices.find_all_by_date(invoice_date)
-    #all_items = return_invoice_items(all_invoices)
-    #all_items.map { |item| item.unit_price }.reduce(0, :+)
-  end
-
-#make a method in invoice repo to take an array, not using currently
-  def return_invoice_items(invoice_array)
-    array = []
-    invoice_array.map do |invoice|
-      array << se.invoice_items.find_all_by_invoice_id(invoice.id)
-    end
-    array
-  end
-
-  def top_revenue_earners(num = 20)
-  end
-
-  def merchants_with_pending_invoices
-  end
-
   def merchants_with_only_one_item
+    merchants_items = se.all_items.map { |item| item.merchant_id }
+    count_hash = create_hash(merchants_items)
+    merchant_ids = count_hash.select do |key, value|
+      value == 1
+    end.keys
+    merchants_by_ids(merchant_ids)
   end
 
-  def merchants_with_only_one_time_registered_in_month(month)
+  def merchants_by_ids(ids)
+    ids.map { |merchant| se.merchants.find_by_id(merchant) }
   end
 
-  def revenue_by_merchant
+  def create_hash(array)
+    array.inject(Hash.new(0)) { |id, num| id[num] += 1; id }
   end
-
-  def most_sold_item_for_merchant(merchant_id)
-  end
-
-  def best_item_for_merchant(merchant_id)
-  end
-
 end

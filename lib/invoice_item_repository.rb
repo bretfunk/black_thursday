@@ -1,7 +1,6 @@
 
 require_relative 'invoice_item'
 require 'csv'
-require 'pry'
 
 class InvoiceItemRepository
 
@@ -39,7 +38,6 @@ class InvoiceItemRepository
   end
 
   def inspect
-      "#<#{self.class} #{@all.size} rows>"
+    "#<#{self.class} #{@all.size} rows>"
   end
-
 end

@@ -3,7 +3,9 @@ require_relative '../lib/sales_analyst'
 require_relative '../lib/sales_engine'
 
 class SalesAnalystTest < Minitest::Test
+
   attr_reader :se, :sa
+
   def setup
     @se = SalesEngine.from_csv({
       items:          './data/items.csv',
@@ -147,5 +149,11 @@ class SalesAnalystTest < Minitest::Test
     result = sa.invoice_status(:returned)
 
     assert_equal 13.5, result
+  end
+
+  def test_merchants_with_only_one_item
+    result = sa.merchants_with_only_one_item
+
+    assert_equal 243, result.length
   end
 end

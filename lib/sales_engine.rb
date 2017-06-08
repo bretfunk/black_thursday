@@ -63,6 +63,14 @@ class SalesEngine
     invoices.find_by_id(invoice_id)
   end
 
+  def all_merchants
+    merchants.all
+  end
+
+  def all_items
+    items.all
+  end
+
   def find_customers_by_merchant(merch_id)
     array = []
     merch_invoices = invoices.find_all_by_merchant_id(merch_id)
